@@ -1,65 +1,125 @@
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import WaveDivider from "@/components/WaveDivider";
+import Marquee from "@/components/Marquee";
+import Story from "@/components/Story";
+import Specialties from "@/components/Specialties";
+import Menu from "@/components/Menu";
+import Gallery from "@/components/Gallery";
+import Testimonials from "@/components/Testimonials";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+
+/*
+  Color map — kept here for easy wave reference
+  ──────────────────────────────────────────────
+  Hero            dark image
+  Marquee         cream-dark  #FFE4E8
+  Story           cream       #FFF5F6
+  Specialties     cream-dark  #FFE4E8
+  Menu            vanilla     #FFF8F9
+  Gallery         cream       #FFF5F6
+  Testimonials    cream-dark  #FFE4E8
+  Contact         vanilla     #FFF8F9
+  Footer          cream-dark  #FFE4E8
+*/
+
+const C = {
+  cream:     "#FFF5F6",
+  creamDark: "#FFE4E8",
+  vanilla:   "#FFF8F9",
+} as const;
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Navbar />
+      <Hero />
+
+      {/* Hero → Marquee  (dramatic asymmetric swoop) */}
+      <WaveDivider
+        bgColor="transparent"
+        fillColor={C.creamDark}
+        variant={3}
+        className="h-[60px] md:h-[100px] -mt-[60px] md:-mt-[100px] relative z-10"
+      />
+
+      <Marquee />
+
+      {/* Marquee → Story  (elegant minimal arc) */}
+      <WaveDivider
+        bgColor={C.creamDark}
+        fillColor={C.cream}
+        variant={6}
+        flip
+        className="h-[50px] md:h-[80px]"
+      />
+
+      <Story />
+
+      {/* Story → Specialties  (layered double wave) */}
+      <WaveDivider
+        bgColor={C.cream}
+        fillColor={C.creamDark}
+        variant={2}
+        className="h-[70px] md:h-[110px]"
+      />
+
+      <Specialties />
+
+      {/* Specialties → Menu  (soft triple ripple) */}
+      <WaveDivider
+        bgColor={C.creamDark}
+        fillColor={C.vanilla}
+        variant={4}
+        flip
+        className="h-[60px] md:h-[100px]"
+      />
+
+      <Menu />
+
+      {/* Menu → Gallery  (gentle double hill) */}
+      <WaveDivider
+        bgColor={C.vanilla}
+        fillColor={C.cream}
+        variant={1}
+        className="h-[50px] md:h-[80px]"
+      />
+
+      <Gallery />
+
+      {/* Gallery → Testimonials  (triple layered, richest) */}
+      <WaveDivider
+        bgColor={C.cream}
+        fillColor={C.creamDark}
+        variant={5}
+        flip
+        className="h-[70px] md:h-[110px]"
+      />
+
+      <Testimonials />
+
+      {/* Testimonials → Contact  (asymmetric swoop, flipped) */}
+      <WaveDivider
+        bgColor={C.creamDark}
+        fillColor={C.vanilla}
+        variant={3}
+        flip
+        className="h-[60px] md:h-[90px]"
+      />
+
+      <Contact />
+
+      {/* Contact → Footer  (layered double, flipped) */}
+      <WaveDivider
+        bgColor={C.vanilla}
+        fillColor={C.creamDark}
+        variant={2}
+        flip
+        className="h-[60px] md:h-[100px]"
+      />
+
+      <Footer />
+    </>
   );
 }
