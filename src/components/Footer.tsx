@@ -6,7 +6,7 @@ import { ArrowUp, Instagram, MapPin, Phone } from "lucide-react";
 const links = [
   { name: "Accueil", href: "#accueil" },
   { name: "Notre Histoire", href: "#histoire" },
-  { name: "Specialites", href: "#specialites" },
+  { name: "Spécialités", href: "#specialites" },
   { name: "La Carte", href: "#carte" },
   { name: "Galerie", href: "#galerie" },
   { name: "Contact", href: "#contact" },
@@ -26,8 +26,8 @@ export default function Footer() {
               <span className="text-gradient">Delice</span> Desserts
             </h3>
             <p className="text-cream/70 max-w-xl mt-3 leading-relaxed">
-              L&apos;art de la patisserie artisanale a Namur. Un lieu pense pour vivre
-              une experience dessert premium, sur place ou en livraison.
+              L&apos;art de la pâtisserie artisanale à Namur. Un lieu pensé pour vivre
+              une expérience dessert premium, sur place ou en livraison.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-3 mt-6">
@@ -36,7 +36,7 @@ export default function Footer() {
                 <p className="text-cream/65 mt-1">5000 Namur, Belgique</p>
               </div>
               <div className="rounded-2xl bg-cream/10 border border-cream/15 p-4 text-sm text-cream/85">
-                <p className="inline-flex items-center gap-2 text-cream"><Phone size={15} /> +32 81 XX XX XX</p>
+                <p className="inline-flex items-center gap-2 text-cream"><Phone size={15} /> 0493 13 92 50</p>
                 <p className="text-cream/65 mt-1">Lun-Sam 10h-20h | Dim 12h-18h</p>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-5 border-t border-cream/16 flex flex-col sm:flex-row gap-4 items-center justify-between">
-          <p className="text-cream/50 text-sm">&copy; {new Date().getFullYear()} Delice Desserts. Tous droits reserves.</p>
+          <p className="text-cream/50 text-sm">&copy; {new Date().getFullYear()} Delice Desserts. Tous droits réservés. Propulsé par <a href="https://synaplink.be" target="_blank" rel="noopener noreferrer" className="text-gold-light hover:text-gold transition-colors">Synaplink.be</a></p>
           <motion.button
             onClick={scrollToTop}
             whileHover={{ y: -3 }}

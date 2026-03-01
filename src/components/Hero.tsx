@@ -70,8 +70,8 @@ export default function Hero() {
             <span className="block text-gradient italic">Haute Gourmandise</span>
           </h1>
           <p className="mt-6 text-cream/85 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed">
-            Une experience dessert premium entre tradition belge et direction artistique
-            contemporaine. Chaque assiette est pensee pour etre memorisable.
+            Une expérience dessert premium entre tradition belge et direction artistique
+            contemporaine. Chaque assiette est pensée pour être mémorisable.
           </p>
 
           <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">

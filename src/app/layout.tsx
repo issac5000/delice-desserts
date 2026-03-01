@@ -26,22 +26,22 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Delice Desserts | Patisserie Artisanale a Namur",
+  title: "Délice Desserts | Pâtisserie Artisanale à Namur",
   description:
-    "Crepes, gaufres et desserts artisanaux au coeur de Namur. Une experience gourmande unique, preparee avec passion et des ingredients de qualite.",
+    "Crêpes, gaufres et desserts artisanaux au cœur de Namur. Une expérience gourmande unique, préparée avec passion et des ingrédients de qualité.",
   keywords: [
-    "patisserie",
+    "pâtisserie",
     "Namur",
-    "crepes",
+    "crêpes",
     "gaufres",
     "desserts",
     "Delice Desserts",
     "artisanal",
   ],
   openGraph: {
-    title: "Delice Desserts | Patisserie Artisanale a Namur",
+    title: "Délice Desserts | Pâtisserie Artisanale à Namur",
     description:
-      "Crepes, gaufres et desserts artisanaux au coeur de Namur.",
+      "Crêpes, gaufres et desserts artisanaux au cœur de Namur.",
     type: "website",
     locale: "fr_BE",
   },

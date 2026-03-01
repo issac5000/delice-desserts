@@ -3,19 +3,19 @@
 import { motion } from "framer-motion";
 
 const topLine = [
-  "Crepes Signature",
+  "Crêpes Signature",
   "Gaufres Belges",
   "Pancakes Moelleux",
   "Chocolat Belge",
-  "Caramel Speculoos",
+  "Caramel Spéculoos",
   "Fruits Frais",
-  "Delice Namur",
+  "Délice Namur",
 ];
 
 const bottomLine = [
   "Fait Minute",
   "Texture Parfaite",
-  "Presentation Premium",
+  "Présentation Premium",
   "Coffee Pairing",
   "Recettes Maison",
   "Ambiance Chic",

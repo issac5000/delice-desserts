@@ -6,23 +6,23 @@ import { ArrowUpRight } from "lucide-react";
 
 const specialties = [
   {
-    title: "Crepes Artisanales",
+    title: "Crêpes Artisanales",
     description:
-      "Pate preparee chaque matin, cuisson precise et garnitures genereuses pour un equilibre parfait.",
+      "Pâte préparée chaque matin, cuisson précise et garnitures généreuses pour un équilibre parfait.",
     image:
       "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Gaufres Belges",
     description:
-      "Croustillantes a l'exterieur, moelleuses a l'interieur, avec toppings signatures.",
+      "Croustillantes à l'extérieur, moelleuses à l'intérieur, avec toppings signatures.",
     image:
       "https://images.unsplash.com/photo-1562376552-0d160a2f238d?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Pancakes Moelleux",
     description:
-      "Epais, legers et ultra-fondants, servis en composition premium sucree.",
+      "Épais, légers et ultra-fondants, servis en composition premium sucrée.",
     image:
       "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1200&auto=format&fit=crop",
   },
@@ -43,7 +43,7 @@ export default function Specialties() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <span className="section-badge">Nos specialites</span>
+          <span className="section-badge">Nos spécialités</span>
           <h2 className="text-4xl md:text-6xl text-chocolate font-bold mt-5" style={{ fontFamily: "var(--font-playfair)" }}>
             L&apos;Excellence <span className="text-gradient italic">Gourmande</span>
           </h2>

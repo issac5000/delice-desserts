@@ -9,19 +9,19 @@ const values = [
     icon: Sparkles,
     title: "Fait Maison",
     description:
-      "Chaque creation est preparee artisanalement avec des ingredients frais et de saison.",
+      "Chaque création est préparée artisanalement avec des ingrédients frais et de saison.",
   },
   {
     icon: Heart,
     title: "Avec Passion",
     description:
-      "Notre amour pour la patisserie se retrouve dans chaque bouchee, chaque presentation.",
+      "Notre amour pour la pâtisserie se retrouve dans chaque bouchée, chaque présentation.",
   },
   {
     icon: Award,
     title: "Excellence",
     description:
-      "Un savoir-faire unique qui allie tradition belge et creativite contemporaine.",
+      "Un savoir-faire unique qui allie tradition belge et créativité contemporaine.",
   },
 ];
 
@@ -87,7 +87,7 @@ export default function Story() {
                 100%
               </div>
               <div className="text-chocolate/70 text-sm mt-1">
-                Ingredients frais & artisanaux
+                Ingrédients frais & artisanaux
               </div>
             </motion.div>
 
@@ -104,22 +104,22 @@ export default function Story() {
             className="space-y-6"
           >
             <p className="text-lg text-chocolate/80 leading-relaxed">
-              Niché au coeur de Namur, <strong className="text-chocolate">Delice Desserts</strong> est
-              bien plus qu&apos;une simple patisserie. C&apos;est un lieu où
-              chaque crepe, chaque gaufre, chaque dessert raconte une histoire
+              Niché au cœur de Namur, <strong className="text-chocolate">Délice Desserts</strong> est
+              bien plus qu&apos;une simple pâtisserie. C&apos;est un lieu où
+              chaque crêpe, chaque gaufre, chaque dessert raconte une histoire
               de passion et de savoir-faire.
             </p>
             <p className="text-lg text-chocolate/80 leading-relaxed">
-              De la preparation minutieuse de nos pates à la selection
+              De la préparation minutieuse de nos pâtes à la sélection
               rigoureuse de nos garnitures — Nutella onctueux, fruits frais
-              de saison, sauces maison au caramel et au speculoos —
-              chaque detail est pense pour vous offrir un moment
+              de saison, sauces maison au caramel et au spéculoos —
+              chaque détail est pensé pour vous offrir un moment
               d&apos;exception.
             </p>
             <p className="text-lg text-chocolate/80 leading-relaxed">
-              Que vous soyez amateur de classiques belges ou en quete de
-              decouvertes gustatives, notre carte saura ravir vos papilles
-              et eveiller vos sens.
+              Que vous soyez amateur de classiques belges ou en quête de
+              découvertes gustatives, notre carte saura ravir vos papilles
+              et éveiller vos sens.
             </p>
 
             <div className="pt-4">
@@ -127,7 +127,7 @@ export default function Story() {
                 href="#carte"
                 className="inline-flex items-center gap-3 text-gold font-semibold tracking-wider uppercase text-sm group"
               >
-                Decouvrir nos creations
+                Découvrir nos créations
                 <span className="w-8 h-[2px] bg-gold transition-all duration-300 group-hover:w-12" />
               </a>
             </div>

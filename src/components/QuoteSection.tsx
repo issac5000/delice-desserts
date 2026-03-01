@@ -2,10 +2,11 @@
 
 import { motion, useInView } from "framer-motion";
 import { Quote } from "lucide-react";
+import Image from "next/image";
 import { useRef } from "react";
 
 export default function QuoteSection() {
-  const quoteRef = useRef<HTMLElement | null>(null);
+  const quoteRef = useRef<HTMLQuoteElement | null>(null);
   const isInView = useInView(quoteRef, { once: true, margin: "-80px" });
 
   const line1 = "Un dessert n'est pas juste une gourmandise.".split(" ");
@@ -93,6 +94,22 @@ export default function QuoteSection() {
             </span>
             <span className="h-[1px] w-10 bg-gold/60" />
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="relative z-20 mt-8 flex justify-center"
+          >
+            <Image
+              src="/logo.png"
+              alt="Delice Desserts logo"
+              width={240}
+              height={240}
+              className="object-contain"
+            />
+          </motion.div>
         </motion.blockquote>
       </div>
     </section>

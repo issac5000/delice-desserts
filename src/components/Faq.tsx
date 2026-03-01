@@ -5,19 +5,19 @@ const faqs = [
   },
   {
     q: "Proposez-vous des options sans lactose ou sans gluten ?",
-    a: "Nous proposons certaines options adaptees selon les produits du jour. Demandez a l'equipe avant de commander.",
+    a: "Nous proposons certaines options adaptées selon les produits du jour. Demandez à l'équipe avant de commander.",
   },
   {
-    q: "Peut-on reserver une table ?",
-    a: "Oui, vous pouvez nous appeler pour reserver, surtout les week-ends ou en fin d'apres-midi.",
+    q: "Peut-on réserver une table ?",
+    a: "Oui, vous pouvez nous appeler pour réserver, surtout les week-ends ou en fin d'après-midi.",
   },
   {
     q: "Quels sont vos horaires ?",
     a: "Lundi au jeudi: 10h00 - 20h00, vendredi et samedi: 10h00 - 21h00, dimanche: 12h00 - 18h00.",
   },
   {
-    q: "Acceptez-vous les commandes pour evenements ?",
-    a: "Oui, nous realisons des commandes specifiques pour anniversaires et evenements prives sur demande.",
+    q: "Acceptez-vous les commandes pour événements ?",
+    a: "Oui, nous réalisons des commandes spécifiques pour anniversaires et événements privés sur demande.",
   },
 ];
 
@@ -32,7 +32,7 @@ export default function Faq() {
             className="text-4xl md:text-5xl font-bold text-chocolate mt-5"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Questions <span className="text-gradient italic">frequentes</span>
+            Questions <span className="text-gradient italic">fréquentes</span>
           </h2>
           <p className="text-chocolate/60 mt-4 max-w-2xl mx-auto">
             Tout ce qu&apos;il faut savoir avant votre passage chez Delice Desserts.

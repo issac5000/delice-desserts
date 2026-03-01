@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { name: "Accueil", href: "#accueil" },
   { name: "Notre Histoire", href: "#histoire" },
-  { name: "Specialites", href: "#specialites" },
+  { name: "Spécialités", href: "#specialites" },
   { name: "La Carte", href: "#carte" },
   { name: "Galerie", href: "#galerie" },
   { name: "Contact", href: "#contact" },
@@ -66,7 +66,7 @@ export default function Navbar() {
               href="#contact"
               className="rounded-full border border-gold/45 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-chocolate bg-cream hover:bg-gold hover:text-espresso transition-all"
             >
-              Reserver
+              Réserver
             </a>
             <a
               href="#carte"
@@ -122,7 +122,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileOpen(false)}
                 className="rounded-full bg-cream text-espresso text-center px-4 py-3 text-xs font-bold uppercase tracking-[0.14em]"
               >
-                Reserver
+                Réserver
               </a>
               <a
                 href="#carte"
