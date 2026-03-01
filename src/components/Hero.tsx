@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
@@ -11,146 +12,96 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "38%"]);
+  const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.14]);
+  const fade = useTransform(scrollYProgress, [0, 0.78], [1, 0]);
 
   return (
-    <section
-      id="accueil"
-      ref={ref}
-      className="relative h-screen overflow-hidden"
-    >
-      {/* Background with parallax */}
-      <motion.div
-        style={{ y, scale }}
-        className="absolute inset-0"
-      >
+    <section id="accueil" ref={ref} className="relative min-h-screen pb-32 overflow-hidden">
+      <motion.div style={{ y: yBg, scale: scaleBg }} className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-[center_60%]"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=2940&auto=format&fit=crop')`,
+            backgroundImage: "url('/hero.png')",
           }}
         />
-        {/* Dark overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-espresso/70 via-espresso/50 to-espresso/80" />
-        {/* Gold tint overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-gold/10 via-transparent to-rose/10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(255,226,236,0.24),transparent_36%),radial-gradient(circle_at_80%_12%,rgba(244,184,200,0.3),transparent_34%)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-espresso/92 via-espresso/64 to-espresso/88" />
       </motion.div>
 
-      {/* Floating decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={{ y: [-20, 20, -20], rotate: [0, 5, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-[10%] w-32 h-32 rounded-full bg-gold/10 blur-3xl"
-        />
-        <motion.div
-          animate={{ y: [20, -20, 20], rotate: [0, -5, 0] }}
+          animate={{ y: [0, -24, 0], x: [0, 18, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 right-[15%] w-48 h-48 rounded-full bg-rose/10 blur-3xl"
+          className="absolute top-[18%] left-[9%] w-64 h-64 rounded-full bg-gold/16 blur-3xl"
         />
         <motion.div
-          animate={{ y: [-15, 15, -15] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-1/4 left-1/3 w-40 h-40 rounded-full bg-caramel/10 blur-3xl"
+          animate={{ y: [0, 18, 0], x: [0, -18, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[18%] right-[10%] w-80 h-80 rounded-full bg-rose/16 blur-3xl"
         />
       </div>
 
-      {/* Content */}
-      <motion.div
-        style={{ opacity }}
-        className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6"
-      >
-        {/* Badge */}
+      <motion.div style={{ opacity: fade }} className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 -mt-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8"
+          transition={{ duration: 0.8 }}
+          className="relative z-0"
         >
-          <span className="inline-flex items-center gap-2 px-5 py-2 border border-gold/40 bg-gold/10 text-gold-light text-sm tracking-[0.2em] uppercase">
-            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-            Namur, Belgique
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Délice Desserts"
+            width={600}
+            height={290}
+            priority
+            className="w-[320px] sm:w-[420px] lg:w-[520px] h-auto mx-auto brightness-0 invert drop-shadow-[0_6px_40px_rgba(232,160,180,0.4)]"
+          />
         </motion.div>
 
-        {/* Main title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-cream leading-[0.9] mb-6"
-          style={{ fontFamily: "var(--font-playfair)" }}
-        >
-          <span className="block">Delice</span>
-          <span className="block text-gradient mt-2">Desserts</span>
-        </motion.h1>
-
-        {/* Decorative line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mb-6"
-        />
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="text-cream/80 text-lg md:text-xl lg:text-2xl max-w-2xl leading-relaxed tracking-wide"
-          style={{ fontFamily: "var(--font-playfair)" }}
-        >
-          L&apos;art de la patisserie artisanale,
-          <br className="hidden md:block" />
-          <span className="text-gold-light italic"> au coeur de Namur</span>
-        </motion.p>
-
-        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="flex flex-col sm:flex-row gap-4 mt-10"
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="relative z-20 -mt-16 md:-mt-20 text-center"
         >
-          <a
-            href="#carte"
-            className="group relative px-8 py-4 bg-gold text-espresso font-semibold text-sm tracking-[0.15em] uppercase overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(201,160,80,0.5)]"
-          >
-            <span className="relative z-10">Decouvrir la Carte</span>
-            <div className="absolute inset-0 bg-gold-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-          </a>
-          <a
-            href="#contact"
-            className="px-8 py-4 border-2 border-cream/30 text-cream font-semibold text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-500 hover:shadow-[0_0_30px_rgba(201,160,80,0.2)]"
-          >
-            Nous Trouver
-          </a>
+          <h1 className="text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] text-cream font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
+            Desserts
+            <span className="block text-gradient italic">Haute Gourmandise</span>
+          </h1>
+          <p className="mt-6 text-cream/85 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed">
+            Une experience dessert premium entre tradition belge et direction artistique
+            contemporaine. Chaque assiette est pensee pour etre memorisable.
+          </p>
+
+          <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
+            <a
+              href="#carte"
+              className="rounded-full bg-gradient-to-r from-gold to-gold-dark px-8 py-4 text-espresso text-xs sm:text-sm font-bold uppercase tracking-[0.16em] text-center hover:brightness-110 transition-all"
+            >
+              Voir la carte
+            </a>
+            <a
+              href="#galerie"
+              className="rounded-full border border-cream/45 px-8 py-4 text-cream text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-center hover:border-gold-light hover:text-gold-light transition-all"
+            >
+              Explorer le lieu
+            </a>
+          </div>
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
+        transition={{ delay: 1.4 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-cream/50 text-xs tracking-[0.3em] uppercase">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <ChevronDown size={20} className="text-gold/70" />
+        <span className="text-cream/50 text-[10px] tracking-[0.35em] uppercase">Scroll</span>
+        <motion.div animate={{ y: [0, 7, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+          <ChevronDown size={20} className="text-gold-light" />
         </motion.div>
       </motion.div>
-
-      {/* Bottom fade — wave divider handles the transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-cream/40 to-transparent" />
     </section>
   );
 }

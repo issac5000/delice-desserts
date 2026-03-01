@@ -1,150 +1,88 @@
 "use client";
 
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const specialties = [
   {
     title: "Crepes Artisanales",
     description:
-      "Pate preparee chaque matin avec des ingredients frais. Garnitures gourmandes et presentations soignees.",
+      "Pate preparee chaque matin, cuisson precise et garnitures genereuses pour un equilibre parfait.",
     image:
-      "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=800&auto=format&fit=crop",
-    accent: "from-gold/20 to-caramel/20",
+      "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Gaufres Belges",
     description:
-      "La tradition belge dans toute sa splendeur. Croustillantes a l'exterieur, moelleuses a l'interieur.",
+      "Croustillantes a l'exterieur, moelleuses a l'interieur, avec toppings signatures.",
     image:
-      "https://images.unsplash.com/photo-1562376552-0d160a2f238d?q=80&w=800&auto=format&fit=crop",
-    accent: "from-rose/20 to-gold/20",
+      "https://images.unsplash.com/photo-1562376552-0d160a2f238d?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Pancakes Moelleux",
     description:
-      "Epais, legers et fondants. Nos pancakes sont un veritable nuage de douceur a chaque bouchee.",
+      "Epais, legers et ultra-fondants, servis en composition premium sucree.",
     image:
-      "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=800&auto=format&fit=crop",
-    accent: "from-caramel/20 to-rose/20",
+      "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 
 export default function Specialties() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-120px" });
 
   return (
-    <section className="relative py-32 bg-cream-dark overflow-hidden">
-      {/* Background texture */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #E8A0B4 1px, transparent 0)`,
-            backgroundSize: "60px 60px",
-          }}
-        />
-      </div>
+    <section id="specialites" className="relative py-32 bg-vanilla overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_15%,rgba(232,160,180,0.2),transparent_35%),radial-gradient(circle_at_10%_88%,rgba(208,122,148,0.15),transparent_35%)]" />
 
-      {/* Floating blurs */}
-      <motion.div
-        style={{ y: y1 }}
-        className="absolute top-1/4 -left-32 w-64 h-64 bg-gold/10 rounded-full blur-3xl"
-      />
-      <motion.div
-        style={{ y: y2 }}
-        className="absolute bottom-1/4 -right-32 w-80 h-80 bg-rose/10 rounded-full blur-3xl"
-      />
-
-      <div ref={containerRef} className="max-w-7xl mx-auto px-6 relative">
-        {/* Section header */}
+      <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 26 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-14"
         >
-          <span className="text-gold text-sm tracking-[0.3em] uppercase font-medium">
-            Nos Specialites
-          </span>
-          <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-chocolate mt-4 mb-6"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            L&apos;Excellence{" "}
-            <span className="text-gradient italic">Gourmande</span>
+          <span className="section-badge">Nos specialites</span>
+          <h2 className="text-4xl md:text-6xl text-chocolate font-bold mt-5" style={{ fontFamily: "var(--font-playfair)" }}>
+            L&apos;Excellence <span className="text-gradient italic">Gourmande</span>
           </h2>
-          <div className="w-16 h-[2px] bg-gold mx-auto" />
         </motion.div>
 
-        {/* Specialty cards */}
-        <div className="space-y-24">
+        <div className="grid lg:grid-cols-3 gap-6">
           {specialties.map((item, i) => (
-            <motion.div
+            <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
-              className={`flex flex-col ${
-                i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-              } gap-12 items-center`}
+              transition={{ duration: 0.55, delay: i * 0.1 }}
+              className="group premium-ring rounded-[28px] overflow-hidden bg-cream/70 border border-gold/20"
             >
-              {/* Image */}
-              <div className="relative w-full lg:w-1/2 group">
-                <div className="relative aspect-[16/10] overflow-hidden shadow-2xl">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                    style={{
-                      backgroundImage: `url('${item.image}')`,
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-chocolate/40 to-transparent" />
-                </div>
-
-                {/* Decorative accent */}
+              <div className="relative h-72 overflow-hidden">
                 <div
-                  className={`absolute -inset-4 bg-gradient-to-br ${item.accent} -z-10 blur-2xl opacity-50`}
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: `url('${item.image}')` }}
                 />
-
-                {/* Number */}
-                <div
-                  className="absolute -top-6 -left-4 text-8xl font-bold text-gold/15"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  0{i + 1}
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,14,24,0.06),rgba(26,14,24,0.72))]" />
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-cream/80 text-chocolate flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ArrowUpRight size={18} />
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="w-full lg:w-1/2 space-y-6">
-                <h3
-                  className="text-3xl md:text-4xl font-bold text-chocolate"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
+              <div className="p-6">
+                <h3 className="text-2xl text-chocolate font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
                   {item.title}
                 </h3>
-                <div className="w-12 h-[2px] bg-gold" />
-                <p className="text-chocolate/60 text-lg leading-relaxed">
-                  {item.description}
-                </p>
+                <p className="text-chocolate/65 text-sm mt-3 leading-relaxed">{item.description}</p>
                 <a
                   href="#carte"
-                  className="inline-flex items-center gap-3 text-gold-dark font-semibold tracking-wider uppercase text-sm group/link"
+                  className="inline-flex items-center gap-2 mt-5 text-xs uppercase tracking-[0.16em] text-gold-dark font-semibold"
                 >
                   Voir la carte
-                  <span className="w-8 h-[2px] bg-gold-dark transition-all duration-300 group-hover/link:w-12" />
+                  <ArrowUpRight size={14} />
                 </a>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

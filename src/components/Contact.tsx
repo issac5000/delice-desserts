@@ -9,6 +9,8 @@ import {
   Navigation,
   Instagram,
   ExternalLink,
+  Bike,
+  CalendarClock,
 } from "lucide-react";
 
 const hours = [
@@ -21,213 +23,54 @@ const hours = [
   { day: "Dimanche", time: "12h00 - 18h00" },
 ];
 
-const deliveryPlatforms = [
-  { name: "Uber Eats", color: "bg-green-600" },
-  { name: "Deliveroo", color: "bg-teal-500" },
-  { name: "Takeaway", color: "bg-orange-500" },
+const quickCards = [
+  {
+    icon: MapPin,
+    title: "Adresse",
+    content: "Rue Moncrabeau 8, 5000 Namur",
+  },
+  {
+    icon: Phone,
+    title: "Telephone",
+    content: "+32 81 XX XX XX",
+  },
+  {
+    icon: Bike,
+    title: "Livraison",
+    content: "Uber Eats, Deliveroo, Takeaway",
+  },
 ];
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-120px" });
 
   return (
     <section id="contact" className="relative py-32 bg-vanilla overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-rose/5 rounded-full blur-3xl translate-y-1/2" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_10%,rgba(232,160,180,0.22),transparent_38%),radial-gradient(circle_at_8%_88%,rgba(208,122,148,0.16),transparent_35%)]" />
 
       <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
-        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
         >
-          <span className="text-gold text-sm tracking-[0.3em] uppercase font-medium">
-            Rendez-vous
-          </span>
-          <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-chocolate mt-4 mb-6"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            Venez nous{" "}
-            <span className="text-gradient italic">decouvrir</span>
+          <span className="section-badge">Rendez-vous</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-chocolate mt-5" style={{ fontFamily: "var(--font-playfair)" }}>
+            Venez nous <span className="text-gradient italic">decouvrir</span>
           </h2>
-          <div className="w-16 h-[2px] bg-gold mx-auto" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left column - Info */}
-          <div className="space-y-8">
-            {/* Address card */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-8 bg-cream border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(201,160,80,0.12)]"
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-gold" />
-                </div>
-                <div>
-                  <h3
-                    className="text-xl font-bold text-chocolate mb-2"
-                    style={{ fontFamily: "var(--font-playfair)" }}
-                  >
-                    Adresse
-                  </h3>
-                  <p className="text-chocolate/70 text-lg">
-                    Rue Moncrabeau 8
-                  </p>
-                  <p className="text-chocolate/70 text-lg">
-                    5000 Namur, Belgique
-                  </p>
-                  <a
-                    href="https://maps.app.goo.gl/i3hn9L1vfWKh7wnw7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-3 text-gold font-medium text-sm hover:text-gold-dark transition-colors"
-                  >
-                    <Navigation size={14} />
-                    Ouvrir dans Google Maps
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Phone */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="p-8 bg-cream border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(201,160,80,0.12)]"
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-gold" />
-                </div>
-                <div>
-                  <h3
-                    className="text-xl font-bold text-chocolate mb-2"
-                    style={{ fontFamily: "var(--font-playfair)" }}
-                  >
-                    Telephone
-                  </h3>
-                  <p className="text-chocolate/70 text-lg">
-                    +32 81 XX XX XX
-                  </p>
-                  <p className="text-chocolate/50 text-sm mt-1">
-                    Commandes & reservations
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Hours */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="p-8 bg-cream border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(201,160,80,0.12)]"
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gold/10 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-6 h-6 text-gold" />
-                </div>
-                <div className="flex-1">
-                  <h3
-                    className="text-xl font-bold text-chocolate mb-4"
-                    style={{ fontFamily: "var(--font-playfair)" }}
-                  >
-                    Horaires d&apos;ouverture
-                  </h3>
-                  <div className="space-y-2">
-                    {hours.map((h) => (
-                      <div
-                        key={h.day}
-                        className="flex justify-between items-center py-1 border-b border-gold/5 last:border-none"
-                      >
-                        <span className="text-chocolate/70 text-sm font-medium">
-                          {h.day}
-                        </span>
-                        <span className="text-chocolate text-sm font-semibold">
-                          {h.time}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Delivery */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="p-8 bg-cream border border-gold/20"
-            >
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                Livraison a domicile
-              </h3>
-              <p className="text-chocolate/60 mb-6">
-                Commandez vos desserts preferes depuis chez vous !
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {deliveryPlatforms.map((p) => (
-                  <span
-                    key={p.name}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 text-chocolate text-sm font-medium border border-gold/15 hover:border-gold/40 transition-colors cursor-pointer"
-                  >
-                    <ExternalLink size={14} />
-                    {p.name}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Social */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex items-center gap-4"
-            >
-              <a
-                href="https://www.instagram.com/_delice.desserts/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-gold/10 flex items-center justify-center text-gold hover:bg-gold hover:text-espresso transition-all duration-300"
-              >
-                <Instagram size={22} />
-              </a>
-              <div>
-                <p className="text-chocolate font-semibold text-sm">
-                  @_delice.desserts
-                </p>
-                <p className="text-chocolate/50 text-xs">
-                  Suivez nos creations quotidiennes
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right column - Map */}
+        <div className="grid lg:grid-cols-[1.25fr_1fr] gap-7 items-start">
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.12 }}
+            className="space-y-5"
           >
-            <div className="sticky top-32 space-y-6">
-              {/* Map embed */}
-              <div className="overflow-hidden shadow-2xl border border-gold/10 aspect-[4/3]">
+            <article className="premium-ring rounded-[30px] overflow-hidden border border-gold/20 shadow-[0_28px_70px_rgba(45,31,45,0.18)]">
+              <div className="aspect-[16/10] relative">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.5!2d4.8658437!3d50.4673594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c199e9617a51ab%3A0xe03441570bbf5201!2sD%C3%A9lice%20Desserts!5e0!3m2!1sfr!2sbe!4v1700000000000!5m2!1sfr!2sbe"
                   width="100%"
@@ -238,30 +81,121 @@ export default function Contact() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className="w-full h-full"
                 />
+
+                <div className="absolute left-4 right-4 bottom-4">
+                  <div className="glass-premium rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-3 border border-cream/35">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.18em] text-chocolate/45">Delice Desserts</p>
+                      <p className="text-sm text-chocolate/80">Centre de Namur, acces rapide a pied et en voiture.</p>
+                    </div>
+                    <a
+                      href="https://maps.app.goo.gl/i3hn9L1vfWKh7wnw7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-chocolate text-cream px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] hover:bg-chocolate-light transition-colors"
+                    >
+                      <Navigation size={14} />
+                      Itineraire
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div className="grid sm:grid-cols-3 gap-4">
+              {quickCards.map((card, i) => (
+                <motion.article
+                  key={card.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
+                  className="premium-panel rounded-2xl p-4"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-gold/15 text-gold-dark flex items-center justify-center mb-3">
+                    <card.icon size={18} />
+                  </div>
+                  <p className="text-xs uppercase tracking-[0.18em] text-chocolate/45">{card.title}</p>
+                  <p className="text-sm mt-1 text-chocolate/80">{card.content}</p>
+                </motion.article>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.18 }}
+            className="space-y-5"
+          >
+            <article className="premium-panel rounded-3xl p-6">
+              <div className="flex items-center gap-2 text-gold-dark mb-3">
+                <CalendarClock size={18} />
+                <p className="text-xs uppercase tracking-[0.2em]">Horaires</p>
+              </div>
+              <div className="space-y-2">
+                {hours.map((h) => (
+                  <div key={h.day} className="flex items-center justify-between border-b border-gold/12 pb-1.5 last:border-none">
+                    <span className="text-sm text-chocolate/70">{h.day}</span>
+                    <span className="text-sm font-semibold text-chocolate">{h.time}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="premium-panel rounded-3xl p-6">
+              <div className="flex items-center gap-2 text-gold-dark mb-3">
+                <ExternalLink size={18} />
+                <p className="text-xs uppercase tracking-[0.2em]">Commander</p>
+              </div>
+              <p className="text-chocolate/65 text-sm leading-relaxed">
+                Commandez en direct par telephone ou via les plateformes de livraison.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {[
+                  "Uber Eats",
+                  "Deliveroo",
+                  "Takeaway",
+                ].map((platform) => (
+                  <span key={platform} className="px-3 py-1.5 rounded-full bg-gold/12 border border-gold/25 text-xs font-semibold text-chocolate/80">
+                    {platform}
+                  </span>
+                ))}
               </div>
 
-              {/* Quick action */}
-              <div className="p-6 bg-gradient-to-br from-gold to-gold-dark text-espresso text-center">
-                <h3
-                  className="text-2xl font-bold mb-2"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  Envie d&apos;un dessert ?
-                </h3>
-                <p className="text-espresso/70 mb-4">
-                  Passez nous voir ou commandez en ligne !
-                </p>
+              <a
+                href="tel:+3281XXXXXX"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-dark text-espresso px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] hover:brightness-105 transition-all"
+              >
+                <Phone size={14} />
+                Appeler maintenant
+              </a>
+            </article>
+
+            <article className="premium-panel rounded-3xl p-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-chocolate/45">Social</p>
+              <div className="flex items-center gap-3 mt-3">
                 <a
-                  href="https://maps.app.goo.gl/i3hn9L1vfWKh7wnw7"
+                  href="https://www.instagram.com/_delice.desserts/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-chocolate text-cream font-semibold text-sm tracking-wider uppercase hover:bg-chocolate-light transition-colors duration-300"
+                  className="w-11 h-11 rounded-full bg-gold/15 text-gold-dark flex items-center justify-center hover:bg-gold hover:text-espresso transition-colors"
                 >
-                  <Navigation size={16} />
-                  Y aller maintenant
+                  <Instagram size={20} />
                 </a>
+                <div>
+                  <p className="text-sm font-semibold text-chocolate">@_delice.desserts</p>
+                  <p className="text-xs text-chocolate/50">Nouveautes et creations du jour</p>
+                </div>
               </div>
-            </div>
+
+              <div className="mt-5 rounded-2xl bg-chocolate text-cream p-4">
+                <div className="flex items-center gap-2 mb-1">
+                  <Clock size={14} className="text-gold-light" />
+                  <p className="text-xs uppercase tracking-[0.16em] text-cream/60">Conseil</p>
+                </div>
+                <p className="text-sm text-cream/90">Les heures les plus calmes sont entre 14h30 et 17h00.</p>
+              </div>
+            </article>
           </motion.div>
         </div>
       </div>
