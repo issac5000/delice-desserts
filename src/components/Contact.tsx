@@ -71,7 +71,7 @@ export default function Contact() {
                   href="https://maps.app.goo.gl/i3hn9L1vfWKh7wnw7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-chocolate text-cream px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] hover:bg-chocolate-light transition-colors"
+                  className="btn-cta inline-flex items-center gap-2 rounded-full text-cream px-4 py-2 text-xs font-bold uppercase tracking-[0.14em]"
                 >
                   <Navigation size={14} />
                   Itinéraire
@@ -135,7 +135,7 @@ export default function Contact() {
 
             <a
               href="tel:+32493139250"
-              className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-chocolate text-cream px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] hover:bg-chocolate-light transition-colors"
+              className="btn-cta mt-6 inline-flex items-center justify-center gap-2 rounded-full text-cream px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em]"
             >
               <Phone size={14} />
               Appeler maintenant

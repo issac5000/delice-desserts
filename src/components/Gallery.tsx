@@ -152,7 +152,7 @@ export default function Gallery() {
               href="https://www.instagram.com/_delice.desserts/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex mt-3 items-center gap-3 rounded-full bg-chocolate text-cream px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] hover:bg-chocolate-light transition-colors"
+              className="btn-cta inline-flex mt-3 items-center gap-3 rounded-full text-cream px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em]"
             >
               Voir Instagram
             </a>

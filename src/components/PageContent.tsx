@@ -8,6 +8,8 @@ import WaveDivider from "./WaveDivider";
 import Story from "./Story";
 import Marquee from "./Marquee";
 import Specialties from "./Specialties";
+import Cocktails from "./Cocktails";
+import Ambiance from "./Ambiance";
 import Menu from "./Menu";
 import QuoteSection from "./QuoteSection";
 import Gallery from "./Gallery";
@@ -36,8 +38,10 @@ export default function PageContent() {
         <Story />
         <Marquee />
         <Specialties />
-        <Menu />
+        <Cocktails />
         <QuoteSection />
+        <Ambiance />
+        <Menu />
         <Gallery />
         <Testimonials />
         <Contact />

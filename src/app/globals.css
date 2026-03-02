@@ -296,3 +296,15 @@ main::before {
   height: 1px;
   background: linear-gradient(90deg, transparent, #E8A0B4, transparent);
 }
+
+/* CTA button hover sweep */
+.btn-cta {
+  background: linear-gradient(90deg, #D07A94 50%, #2D1F2D 50%);
+  background-size: 200% 100%;
+  background-position: right;
+  transition: background-position 0.4s ease;
+}
+
+.btn-cta:hover {
+  background-position: left;
+}

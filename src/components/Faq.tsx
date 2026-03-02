@@ -25,7 +25,7 @@ export default function Faq() {
   return (
     <section id="faq" className="relative py-28 bg-cream overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(232,160,180,0.14),transparent_34%),radial-gradient(circle_at_85%_80%,rgba(208,122,148,0.12),transparent_32%)]" />
-      <div className="px-6 md:px-10 lg:px-16 xl:px-24">
+      <div className="max-w-4xl mx-auto px-6">
         <div className="mb-12 relative text-center">
           <span className="section-badge">FAQ</span>
           <h2
