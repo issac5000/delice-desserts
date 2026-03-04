@@ -9,22 +9,30 @@ const highlights = [
     icon: GlassWater,
     title: "Mojitos Signature",
     desc: "Classique, fruits rouges, mangue, passion\u2026 notre carte de mojitos revisite le cocktail mythique avec des saveurs uniques.",
+    gradient: "from-[#D07A94]/20 to-[#F2C4D0]/10",
+    glow: "rgba(208, 122, 148, 0.35)",
   },
   {
     icon: Cherry,
     title: "Pour Tous les Go\u00fbts",
     desc: "Avec ou sans alcool, fruités ou acidulés, chaque cocktail est préparé minute avec des ingrédients frais.",
+    gradient: "from-[#E8A0B4]/20 to-[#FADCE6]/10",
+    glow: "rgba(232, 160, 180, 0.35)",
   },
   {
     icon: Sparkles,
     title: "L\u2019Art du M\u00e9lange",
     desc: "Nos baristas imaginent des associations originales entre desserts et cocktails pour une expérience complète.",
+    gradient: "from-[#C8A97E]/20 to-[#F2C4D0]/10",
+    glow: "rgba(200, 169, 126, 0.35)",
   },
 ];
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export default function Cocktails() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-120px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <section id="cocktails" className="relative py-32 bg-cream overflow-hidden">
@@ -54,26 +62,60 @@ export default function Cocktails() {
               accompagner chaque bouchée sucrée.
             </p>
 
-            <div className="mt-10 space-y-6">
+            {/* Cards — side by side */}
+            <div className="mt-10 grid grid-cols-3 gap-3">
               {highlights.map((item, i) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.25 + i * 0.12 }}
-                  className="flex items-start gap-4 group"
+                  initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+                  animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.25 + i * 0.15,
+                    ease,
+                    filter: { duration: 0.5, delay: 0.25 + i * 0.15 },
+                  }}
+                  className="group relative rounded-2xl p-4 cursor-default overflow-hidden text-center
+                    bg-white/60 backdrop-blur-sm
+                    border border-gold/15
+                    shadow-[0_2px_16px_rgba(45,31,45,0.04)]
+                    hover:border-gold/40 hover:shadow-[0_8px_32px_rgba(208,122,148,0.12)]
+                    hover:-translate-y-1
+                    transition-all duration-300 ease-out"
                 >
-                  <div className="flex-shrink-0 w-11 h-11 rounded-2xl bg-vanilla border border-gold/20 flex items-center justify-center text-gold-dark group-hover:border-gold/40 transition-colors">
-                    <item.icon size={20} />
-                  </div>
-                  <div>
+                  {/* Gradient bg on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl`} />
+
+                  <div className="relative flex flex-col items-center gap-3">
+                    {/* Icon */}
+                    <div
+                      className="w-10 h-10 rounded-xl
+                        bg-gradient-to-br from-gold-dark/10 to-rose/10
+                        border border-gold/20
+                        flex items-center justify-center
+                        group-hover:scale-110 group-hover:border-gold/40
+                        transition-all duration-300"
+                      style={{
+                        boxShadow: `0 0 0px ${item.glow}`,
+                        transition: "box-shadow 300ms ease, transform 300ms ease, border-color 300ms ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 16px ${item.glow}`;
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 0px ${item.glow}`;
+                      }}
+                    >
+                      <item.icon size={18} className="text-gold-dark" />
+                    </div>
+
                     <h3
-                      className="text-lg text-chocolate font-bold"
+                      className="text-sm text-chocolate font-bold leading-tight"
                       style={{ fontFamily: "var(--font-playfair)" }}
                     >
                       {item.title}
                     </h3>
-                    <p className="text-chocolate/55 text-sm mt-1 leading-relaxed">
+                    <p className="text-chocolate/55 text-xs leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

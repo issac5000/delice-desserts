@@ -30,32 +30,54 @@ const specialties = [
 
 export default function Specialties() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-120px" });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <section id="specialites" className="relative py-32 bg-vanilla overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_15%,rgba(232,160,180,0.2),transparent_35%),radial-gradient(circle_at_10%_88%,rgba(208,122,148,0.15),transparent_35%)]" />
 
       <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
+        {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 26 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center"
         >
           <span className="section-badge">Nos spécialités</span>
-          <h2 className="text-4xl md:text-6xl text-chocolate font-bold mt-5" style={{ fontFamily: "var(--font-playfair)" }}>
-            L&apos;Excellence <span className="text-gradient italic">Gourmande</span>
-          </h2>
         </motion.div>
 
+        {/* Titre */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl md:text-6xl text-chocolate font-bold mt-5 mb-14 text-center"
+          style={{ fontFamily: "var(--font-playfair)" }}
+        >
+          L&apos;Excellence{" "}
+          <motion.span
+            className="text-gradient italic inline-block"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Gourmande
+          </motion.span>
+        </motion.h2>
+
+        {/* Cards */}
         <div className="grid lg:grid-cols-3 gap-6">
           {specialties.map((item, i) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{
+                duration: 0.65,
+                delay: 0.3 + i * 0.15,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="group premium-ring rounded-[28px] overflow-hidden bg-cream/70 border border-gold/20"
             >
               <div className="relative h-72 overflow-hidden">

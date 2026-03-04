@@ -67,29 +67,62 @@ export default function Gallery() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_86%_12%,rgba(208,122,148,0.2),transparent_36%),radial-gradient(circle_at_8%_80%,rgba(232,160,180,0.16),transparent_35%)]" />
 
       <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
-        <div className="flex flex-col gap-12">
-          <motion.div
-            initial={{ opacity: 0, y: -24 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-            className="text-center"
-          >
-            <span className="section-badge">Inspiration</span>
-            <h2 className="text-4xl md:text-6xl font-bold text-chocolate mt-5" style={{ fontFamily: "var(--font-playfair)" }}>
-              Notre <span className="text-gradient italic">Galerie</span>
-            </h2>
-            <p className="text-chocolate/65 mt-5 leading-relaxed">
-              Une composition visuelle facon magazine: hero shot, plans details,
-              ambiance coffee-shop et finitions gourmandes.
-            </p>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
+        >
+          <span className="section-badge">Inspiration</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-chocolate mt-5" style={{ fontFamily: "var(--font-playfair)" }}>
+            Notre <span className="text-gradient italic">Galerie</span>
+          </h2>
+          <p className="text-chocolate/65 mt-5 leading-relaxed">
+            Une composition visuelle facon magazine: hero shot, plans details,
+            ambiance coffee-shop et finitions gourmandes.
+          </p>
+        </motion.div>
 
+        {/* iPhone + Gallery Grid */}
+        <div className="grid lg:grid-cols-[auto_1fr] gap-8 lg:gap-10 items-start">
+          {/* iPhone mockup */}
+          <motion.div
+            initial={{ opacity: 0, x: -40, filter: "blur(10px)" }}
+            animate={isInView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            className="mx-auto lg:mx-0 lg:sticky lg:top-28"
+          >
+            <div className="relative w-[240px] sm:w-[260px] lg:w-[280px]">
+              {/* Instagram screenshot — precise fit inside screen area */}
+              <div className="absolute top-[0.8%] bottom-[0.8%] left-[2.2%] right-[2.2%] rounded-[13%] overflow-hidden z-0">
+                <Image
+                  src="/instagram.PNG"
+                  alt="Délice Desserts Instagram"
+                  width={1179}
+                  height={2556}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              {/* iPhone frame on top */}
+              <Image
+                src="/iphone.png"
+                alt="iPhone"
+                width={363}
+                height={750}
+                className="relative z-10 w-full h-auto pointer-events-none"
+              />
+              {/* Glow behind */}
+              <div className="absolute -inset-6 -z-10 rounded-full bg-rose/20 blur-3xl" />
+            </div>
           </motion.div>
 
+          {/* Gallery grid */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[320px]"
+            className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[280px]"
           >
             {galleryItems.map((item, i) => (
               <motion.article
@@ -114,9 +147,9 @@ export default function Gallery() {
               </motion.article>
             ))}
           </motion.div>
-
         </div>
 
+        {/* Strip carousel */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -140,6 +173,7 @@ export default function Gallery() {
           </motion.div>
         </motion.div>
 
+        {/* Instagram CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -160,6 +194,7 @@ export default function Gallery() {
         </motion.div>
       </div>
 
+      {/* Lightbox */}
       <AnimatePresence>
         {lightbox && (
           <motion.div

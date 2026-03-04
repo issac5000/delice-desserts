@@ -13,13 +13,13 @@ import {
 } from "lucide-react";
 
 const hours = [
-  { day: "Lundi", time: "10h00 - 20h00" },
-  { day: "Mardi", time: "10h00 - 20h00" },
-  { day: "Mercredi", time: "10h00 - 20h00" },
-  { day: "Jeudi", time: "10h00 - 20h00" },
-  { day: "Vendredi", time: "10h00 - 21h00" },
-  { day: "Samedi", time: "10h00 - 21h00" },
-  { day: "Dimanche", time: "12h00 - 18h00" },
+  { day: "Lundi", time: "Fermé" },
+  { day: "Mardi", time: "Fermé" },
+  { day: "Mercredi", time: "12h00 - 20h00" },
+  { day: "Jeudi", time: "12h00 - 20h00" },
+  { day: "Vendredi", time: "12h00 - 20h00" },
+  { day: "Samedi", time: "12h00 - 22h00" },
+  { day: "Dimanche", time: "12h00 - 22h00" },
 ];
 
 export default function Contact() {
@@ -124,7 +124,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone size={16} className="text-gold-dark mt-0.5 shrink-0" />
-                  <p className="text-sm text-chocolate/75">0493 13 92 50</p>
+                  <p className="text-sm text-chocolate/75">0486 45 46 15</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <Bike size={16} className="text-gold-dark mt-0.5 shrink-0" />
@@ -134,7 +134,7 @@ export default function Contact() {
             </div>
 
             <a
-              href="tel:+32493139250"
+              href="tel:+32486454615"
               className="btn-cta mt-6 inline-flex items-center justify-center gap-2 rounded-full text-cream px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em]"
             >
               <Phone size={14} />

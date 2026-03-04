@@ -28,7 +28,7 @@ export default function PageContent() {
       {!splashDone && <SplashScreen onComplete={handleComplete} />}
       <main>
         <Navbar />
-        <Hero />
+        <Hero ready={splashDone} />
         <WaveDivider
           bgColor="transparent"
           fillColor="#FFF5F6"

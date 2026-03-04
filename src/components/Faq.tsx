@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Quels sont vos horaires ?",
-    a: "Lundi au jeudi: 10h00 - 20h00, vendredi et samedi: 10h00 - 21h00, dimanche: 12h00 - 18h00.",
+    a: "Mercredi au vendredi : 12h00 - 20h00, samedi et dimanche : 12h00 - 22h00. Fermé le lundi et mardi.",
   },
   {
     q: "Acceptez-vous les commandes pour événements ?",

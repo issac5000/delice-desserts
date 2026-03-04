@@ -36,8 +36,8 @@ export default function Footer() {
                 <p className="text-cream/65 mt-1">5000 Namur, Belgique</p>
               </div>
               <div className="rounded-2xl bg-cream/10 border border-cream/15 p-4 text-sm text-cream/85">
-                <p className="inline-flex items-center gap-2 text-cream"><Phone size={15} /> 0493 13 92 50</p>
-                <p className="text-cream/65 mt-1">Lun-Sam 10h-20h | Dim 12h-18h</p>
+                <p className="inline-flex items-center gap-2 text-cream"><Phone size={15} /> 0486 45 46 15</p>
+                <p className="text-cream/65 mt-1">Mer-Ven 12h-20h | Sam-Dim 12h-22h</p>
               </div>
             </div>
           </div>

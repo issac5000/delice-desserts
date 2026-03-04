@@ -5,7 +5,19 @@ import { useRef } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 
-export default function Hero() {
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const blurReveal = (delay: number, y = 30) => ({
+  initial: { opacity: 0, y, filter: "blur(12px)" },
+  transition: {
+    duration: 1,
+    delay,
+    ease,
+    filter: { duration: 0.8, delay },
+  },
+});
+
+export default function Hero({ ready = false }: { ready?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -16,19 +28,20 @@ export default function Hero() {
   const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.14]);
   const fade = useTransform(scrollYProgress, [0, 0.78], [1, 0]);
 
+  const show = { opacity: 1, y: 0, filter: "blur(0px)" };
+
   return (
     <section id="accueil" ref={ref} className="relative min-h-screen pb-32 overflow-hidden">
       <motion.div style={{ y: yBg, scale: scaleBg }} className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-[center_60%]"
-          style={{
-            backgroundImage: "url('/hero.png')",
-          }}
+          style={{ backgroundImage: "url('/hero.png')" }}
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(255,226,236,0.24),transparent_36%),radial-gradient(circle_at_80%_12%,rgba(244,184,200,0.3),transparent_34%)]" />
         <div className="absolute inset-0 bg-gradient-to-br from-espresso/92 via-espresso/64 to-espresso/88" />
       </motion.div>
 
+      {/* Floating orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{ y: [0, -24, 0], x: [0, 18, 0] }}
@@ -43,10 +56,16 @@ export default function Hero() {
       </div>
 
       <motion.div style={{ opacity: fade }} className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 -mt-10">
+        {/* Logo — scale + blur reveal */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.6, filter: "blur(20px)" }}
+          animate={ready ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
+          transition={{
+            duration: 1.1,
+            ease,
+            scale: { duration: 1.2, ease: [0.34, 1.56, 0.64, 1] as const },
+            filter: { duration: 0.9 },
+          }}
           className="relative z-0"
         >
           <Image
@@ -59,42 +78,88 @@ export default function Hero() {
           />
         </motion.div>
 
+        {/* Title "Desserts" — blur reveal from below */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
+          {...blurReveal(0.3, 50)}
+          animate={ready ? show : {}}
           className="relative z-20 -mt-16 md:-mt-20 text-center"
         >
           <h1 className="text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] text-cream font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
             Desserts
-            <span className="block text-gradient italic">Haute Gourmandise</span>
           </h1>
-          <p className="mt-6 text-cream/85 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed">
-            Une expérience dessert premium entre tradition belge et direction artistique
-            contemporaine. Chaque assiette est pensée pour être mémorisable.
-          </p>
-
-          <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
-            <a
-              href="#carte"
-              className="rounded-full bg-gradient-to-r from-gold to-gold-dark px-8 py-4 text-espresso text-xs sm:text-sm font-bold uppercase tracking-[0.16em] text-center hover:brightness-110 transition-all"
-            >
-              Voir la carte
-            </a>
-            <a
-              href="#galerie"
-              className="rounded-full border border-cream/45 px-8 py-4 text-cream text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-center hover:border-gold-light hover:text-gold-light transition-all"
-            >
-              Explorer le lieu
-            </a>
-          </div>
         </motion.div>
+
+        {/* "Haute Gourmandise" — separate blur reveal with horizontal spread */}
+        <motion.span
+          initial={{ opacity: 0, y: 20, scale: 0.9, filter: "blur(16px)" }}
+          animate={ready ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" } : {}}
+          transition={{
+            duration: 1,
+            delay: 0.55,
+            ease,
+            scale: { duration: 0.9, delay: 0.55, ease: [0.34, 1.56, 0.64, 1] as const },
+            filter: { duration: 0.7, delay: 0.55 },
+          }}
+          className="block text-gradient italic text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] font-bold -mt-2 md:-mt-3 relative z-20"
+          style={{ fontFamily: "var(--font-playfair)" }}
+        >
+          Haute Gourmandise
+        </motion.span>
+
+        {/* Golden divider line */}
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={ready ? { scaleX: 1, opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.75, ease }}
+          className="w-24 h-px bg-gradient-to-r from-transparent via-gold to-transparent mt-6 origin-center"
+        />
+
+        {/* Description */}
+        <motion.p
+          {...blurReveal(0.85, 20)}
+          animate={ready ? show : {}}
+          className="mt-6 text-cream/85 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed text-center"
+        >
+          Une expérience dessert premium entre tradition belge et direction artistique
+          contemporaine. Chaque assiette est pensée pour être mémorisable.
+        </motion.p>
+
+        {/* CTA Buttons — spring bounce in */}
+        <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
+          <motion.a
+            href="#carte"
+            initial={{ opacity: 0, y: 16, scale: 0.9 }}
+            animate={ready ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{
+              duration: 0.6,
+              delay: 1.05,
+              scale: { type: "spring", stiffness: 300, damping: 20, delay: 1.05 },
+            }}
+            className="rounded-full bg-gradient-to-r from-gold to-gold-dark px-8 py-4 text-espresso text-xs sm:text-sm font-bold uppercase tracking-[0.16em] text-center hover:brightness-110 transition-all"
+          >
+            Voir la carte
+          </motion.a>
+          <motion.a
+            href="#galerie"
+            initial={{ opacity: 0, y: 16, scale: 0.9 }}
+            animate={ready ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{
+              duration: 0.6,
+              delay: 1.2,
+              scale: { type: "spring", stiffness: 300, damping: 20, delay: 1.2 },
+            }}
+            className="rounded-full border border-cream/45 px-8 py-4 text-cream text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-center hover:border-gold-light hover:text-gold-light transition-all"
+          >
+            Explorer le lieu
+          </motion.a>
+        </div>
       </motion.div>
 
+      {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={ready ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: 1.6, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-cream/50 text-[10px] tracking-[0.35em] uppercase">Scroll</span>
