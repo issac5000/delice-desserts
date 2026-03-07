@@ -30,6 +30,20 @@ export default function Contact() {
     <section id="contact" className="relative py-32 bg-vanilla overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_10%,rgba(232,160,180,0.22),transparent_38%),radial-gradient(circle_at_8%_88%,rgba(208,122,148,0.16),transparent_35%)]" />
 
+      {/* Deco — abstract rose bloom */}
+      <svg className="absolute -bottom-24 -right-24 w-[480px] h-[480px] pointer-events-none opacity-[0.13]" viewBox="0 0 200 200">
+        <ellipse cx="100" cy="100" rx="80" ry="45" fill="none" stroke="#D07A94" strokeWidth="1" />
+        <ellipse cx="100" cy="100" rx="80" ry="45" fill="none" stroke="#D07A94" strokeWidth="1" transform="rotate(60 100 100)" />
+        <ellipse cx="100" cy="100" rx="80" ry="45" fill="none" stroke="#D07A94" strokeWidth="1" transform="rotate(120 100 100)" />
+        <circle cx="100" cy="100" r="18" fill="none" stroke="#E8A0B4" strokeWidth="0.8" />
+        <circle cx="100" cy="100" r="30" fill="none" stroke="#E8A0B4" strokeWidth="0.5" />
+      </svg>
+      <svg className="absolute -top-20 -left-20 w-[360px] h-[360px] pointer-events-none opacity-[0.1]" viewBox="0 0 200 200">
+        <ellipse cx="100" cy="100" rx="65" ry="35" fill="none" stroke="#E8A0B4" strokeWidth="1" />
+        <ellipse cx="100" cy="100" rx="65" ry="35" fill="none" stroke="#E8A0B4" strokeWidth="1" transform="rotate(72 100 100)" />
+        <ellipse cx="100" cy="100" rx="65" ry="35" fill="none" stroke="#E8A0B4" strokeWidth="1" transform="rotate(144 100 100)" />
+      </svg>
+
       <div ref={ref} className="max-w-6xl mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

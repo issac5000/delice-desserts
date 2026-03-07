@@ -66,6 +66,19 @@ export default function Gallery() {
     <section id="galerie" className="relative py-32 bg-vanilla overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_86%_12%,rgba(208,122,148,0.2),transparent_36%),radial-gradient(circle_at_8%_80%,rgba(232,160,180,0.16),transparent_35%)]" />
 
+      {/* Deco — flowing S-curve with dots */}
+      <svg className="absolute top-0 left-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 800">
+        <path d="M-20,200 C200,100 400,350 600,250 S1000,400 1220,300" fill="none" stroke="rgba(208,122,148,0.18)" strokeWidth="1.5" />
+        <path d="M-20,500 C200,400 450,600 650,480 S1000,620 1220,520" fill="none" stroke="rgba(232,160,180,0.14)" strokeWidth="1.2" />
+        <circle cx="300" cy="170" r="5" fill="rgba(208,122,148,0.2)" />
+        <circle cx="600" cy="250" r="4" fill="rgba(232,160,180,0.22)" />
+        <circle cx="900" cy="340" r="6" fill="rgba(208,122,148,0.15)" />
+        <circle cx="150" cy="480" r="3.5" fill="rgba(232,160,180,0.2)" />
+        <circle cx="750" cy="530" r="5" fill="rgba(208,122,148,0.18)" />
+        <circle cx="1050" cy="290" r="3" fill="rgba(232,160,180,0.16)" />
+        <circle cx="450" cy="540" r="4" fill="rgba(208,122,148,0.14)" />
+      </svg>
+
       <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
         {/* Header */}
         <motion.div
@@ -175,22 +188,21 @@ export default function Gallery() {
 
         {/* Instagram CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-10"
+          className="mt-8 flex items-center justify-center gap-3"
         >
-          <div className="premium-panel rounded-2xl p-5 inline-block">
-            <p className="text-xs uppercase tracking-[0.22em] text-chocolate/45">Suivez le moodboard</p>
-            <a
-              href="https://www.instagram.com/_delice.desserts/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta inline-flex mt-3 items-center gap-3 rounded-full text-cream px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em]"
-            >
-              Voir Instagram
-            </a>
-          </div>
+          <div className="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-gold/30" />
+          <a
+            href="https://www.instagram.com/_delice.desserts/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs uppercase tracking-[0.2em] text-chocolate/50 hover:text-gold-dark transition-colors"
+          >
+            @_delice.desserts
+          </a>
+          <div className="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-gold/30" />
         </motion.div>
       </div>
 
@@ -211,14 +223,14 @@ export default function Gallery() {
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full max-h-[85vh] rounded-3xl overflow-hidden"
+              className="relative max-w-5xl w-full flex items-center justify-center"
             >
               <Image
                 src={lightbox.src}
                 alt={lightbox.alt}
                 width={1200}
                 height={800}
-                className="w-full h-full object-contain"
+                className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-2xl"
               />
               <button
                 onClick={closeLightbox}

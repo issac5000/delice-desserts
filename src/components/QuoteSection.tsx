@@ -37,8 +37,8 @@ export default function QuoteSection() {
       <div className="max-w-5xl mx-auto px-6 relative">
         <motion.blockquote
           ref={quoteRef}
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 18 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
           className="relative text-center px-2 md:px-8 py-10 md:py-14"

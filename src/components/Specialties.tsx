@@ -36,6 +36,14 @@ export default function Specialties() {
     <section id="specialites" className="relative py-32 bg-vanilla overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_15%,rgba(232,160,180,0.2),transparent_35%),radial-gradient(circle_at_10%_88%,rgba(208,122,148,0.15),transparent_35%)]" />
 
+      {/* Deco — scattered rose petals */}
+      <div className="absolute top-12 right-[6%] w-44 h-64 rounded-[63%_37%_30%_70%_/_50%_45%_55%_50%] bg-rose/[0.14] rotate-[25deg] blur-sm pointer-events-none" />
+      <div className="absolute bottom-16 left-[4%] w-32 h-48 rounded-[63%_37%_30%_70%_/_50%_45%_55%_50%] bg-gold/[0.12] -rotate-[40deg] blur-sm pointer-events-none" />
+      <div className="absolute top-[38%] right-[2%] w-24 h-36 rounded-[63%_37%_30%_70%_/_50%_45%_55%_50%] bg-rose-light/[0.16] rotate-[65deg] blur-sm pointer-events-none" />
+      <div className="absolute bottom-[18%] right-[20%] w-4 h-4 rounded-full bg-gold-dark/20 pointer-events-none" />
+      <div className="absolute top-[22%] left-[14%] w-3 h-3 rounded-full bg-rose/25 pointer-events-none" />
+      <div className="absolute top-[60%] left-[45%] w-2.5 h-2.5 rounded-full bg-gold/20 pointer-events-none" />
+
       <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
         {/* Badge */}
         <motion.div

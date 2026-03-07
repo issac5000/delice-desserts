@@ -33,6 +33,13 @@ export default function Ambiance() {
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_75%,rgba(232,160,180,0.16),transparent_40%),radial-gradient(circle_at_20%_15%,rgba(208,122,148,0.1),transparent_35%)]" />
 
+      {/* Deco — concentric rose rings */}
+      <div className="absolute -top-28 -right-28 w-96 h-96 rounded-full border-[1.5px] border-rose/15 pointer-events-none" />
+      <div className="absolute -top-14 -right-14 w-72 h-72 rounded-full border border-rose/10 pointer-events-none" />
+      <div className="absolute -top-4 -right-4 w-52 h-52 rounded-full border border-rose-light/15 pointer-events-none" />
+      <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full border-[1.5px] border-gold/12 pointer-events-none" />
+      <div className="absolute -bottom-8 -left-8 w-48 h-48 rounded-full border border-gold-light/15 pointer-events-none" />
+
       <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — Video */}
