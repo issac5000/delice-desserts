@@ -34,7 +34,7 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`max-w-7xl mx-auto rounded-2xl md:rounded-full border px-4 sm:px-6 h-16 flex items-center justify-between transition-all duration-400 ${
+          className={`max-w-7xl mx-auto rounded-full border px-4 sm:px-6 h-16 flex items-center justify-between transition-all duration-400 ${
             isScrolled
               ? "bg-cream/90 border-gold/25 shadow-[0_12px_42px_rgba(45,31,45,0.16)]"
               : "bg-chocolate/45 border-cream/25"

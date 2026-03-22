@@ -69,7 +69,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-5 border-t border-cream/16 flex flex-col sm:flex-row gap-4 items-center justify-between">
-          <p className="text-cream/50 text-sm">&copy; {new Date().getFullYear()} Delice Desserts. Tous droits réservés. Propulsé par <a href="https://synaplink.be" target="_blank" rel="noopener noreferrer" className="text-gold-light hover:text-gold transition-colors">Synaplink.be</a></p>
+          <p className="text-cream/50 text-sm text-center sm:text-left">&copy; {new Date().getFullYear()} Delice Desserts. Tous droits réservés. Propulsé par <a href="https://synaplink.be" target="_blank" rel="noopener noreferrer" className="text-gold-light hover:text-gold transition-colors">Synaplink.be</a></p>
           <motion.button
             onClick={scrollToTop}
             whileHover={{ y: -3 }}

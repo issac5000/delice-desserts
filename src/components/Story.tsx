@@ -78,7 +78,7 @@ export default function Story() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="absolute -bottom-8 -right-8 md:right-8 bg-white rounded-2xl p-6 shadow-xl max-w-[220px] z-10"
+              className="absolute -bottom-8 right-2 sm:-right-8 md:right-8 bg-white rounded-2xl p-4 sm:p-6 shadow-xl max-w-[180px] sm:max-w-[220px] z-10"
             >
               <div
                 className="text-4xl font-bold text-gold"

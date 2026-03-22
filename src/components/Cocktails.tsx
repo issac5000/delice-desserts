@@ -128,7 +128,7 @@ export default function Cocktails() {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.7 }}
-              className="btn-cta inline-flex items-center gap-2 mt-10 rounded-full text-cream px-6 py-3 text-xs font-bold uppercase tracking-[0.14em]"
+              className="btn-cta flex w-fit items-center gap-2 mt-10 rounded-full text-cream px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] mx-auto lg:mx-0"
             >
               Découvrir la carte
             </motion.a>
