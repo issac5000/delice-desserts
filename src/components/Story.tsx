@@ -101,7 +101,7 @@ export default function Story() {
             initial={{ opacity: 0, x: 60 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.4 }}
-            className="space-y-6"
+            className="space-y-6 text-center lg:text-left"
           >
             <p className="text-lg text-chocolate/80 leading-relaxed">
               Niché au cœur de Namur, <strong className="text-chocolate">Délice Desserts</strong> est

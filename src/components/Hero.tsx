@@ -100,7 +100,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
             scale: { duration: 0.9, delay: 0.55, ease: [0.34, 1.56, 0.64, 1] as const },
             filter: { duration: 0.7, delay: 0.55 },
           }}
-          className="block text-gradient italic text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] font-bold -mt-2 md:-mt-3 relative z-20 text-center"
+          className="block text-gradient italic text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] font-bold mt-1 sm:-mt-2 md:-mt-3 relative z-20 text-center"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           Haute Gourmandise

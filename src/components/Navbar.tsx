@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
+import { useCart, getCartTotals } from "@/context/CartContext";
 
 const navLinks = [
   { name: "Accueil", href: "#accueil" },
@@ -16,6 +17,8 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const { state, dispatch } = useCart();
+  const { totalItems } = getCartTotals(state.items);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -76,17 +79,33 @@ export default function Navbar() {
             </a>
           </div>
 
-          <button
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className={`lg:hidden p-2 rounded-lg border ${
-              isScrolled
-                ? "text-chocolate border-gold/25 bg-cream/80"
-                : "text-cream border-cream/30 bg-chocolate/45"
-            }`}
-            aria-label="Menu mobile"
-          >
-            {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            {/* Cart icon — mobile only */}
+            <button
+              onClick={() => dispatch({ type: "TOGGLE_CART" })}
+              className={`relative p-2 transition-colors ${
+                isScrolled ? "text-chocolate" : "text-cream"
+              }`}
+              aria-label="Ouvrir le panier"
+            >
+              <ShoppingCart size={22} />
+              {totalItems > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-gold-dark text-cream text-[10px] font-bold flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+
+            <button
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
+              className={`p-2 transition-colors ${
+                isScrolled ? "text-chocolate" : "text-cream"
+              }`}
+              aria-label="Menu mobile"
+            >
+              {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 

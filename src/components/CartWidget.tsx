@@ -74,13 +74,13 @@ export default function CartWidget() {
 
   return (
     <>
-      {/* Floating sphere button */}
+      {/* Floating sphere button — hidden on mobile, shown via Navbar icon instead */}
       <motion.button
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1 }}
         onClick={() => dispatch({ type: "TOGGLE_CART" })}
-        className="fixed bottom-6 left-6 z-50 w-[72px] h-[72px] rounded-full flex items-center justify-center cursor-pointer border-0 p-0"
+        className="hidden sm:flex fixed bottom-6 left-6 z-50 w-[72px] h-[72px] rounded-full items-center justify-center cursor-pointer border-0 p-0"
         style={{
           background:
             "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.25), transparent 40%), radial-gradient(circle at 35% 30%, #7D5066, #4A3548 40%, #2D1F2D 70%, #1A0E18 100%)",
@@ -146,8 +146,9 @@ export default function CartWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-[104px] left-6 z-50 w-[400px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-8rem)] flex flex-col bg-vanilla border border-gold/20 shadow-2xl overflow-hidden"
-            style={{ borderRadius: "28px" }}
+            className="fixed z-50 flex flex-col bg-vanilla border border-gold/20 shadow-2xl overflow-hidden
+              top-20 left-4 right-4 max-h-[calc(100vh-6rem)] rounded-[28px]
+              sm:top-auto sm:left-6 sm:right-auto sm:bottom-[104px] sm:w-[400px] sm:max-w-[calc(100vw-2rem)] sm:max-h-[calc(100vh-8rem)]"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-gold/15 bg-cream shrink-0">
