@@ -16,7 +16,7 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="relative bg-chocolate text-cream overflow-hidden">
+    <footer className="relative bg-chocolate text-cream overflow-hidden shadow-[0_200px_0_0_#2D1F2D]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_14%,rgba(208,122,148,0.25),transparent_34%),radial-gradient(circle_at_88%_90%,rgba(232,160,180,0.16),transparent_34%)]" />
 
       <div className="max-w-7xl mx-auto px-6 py-16 relative">
