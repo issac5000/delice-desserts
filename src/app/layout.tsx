@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Raleway } from "next/font/google";
 import "./globals.css";
 
@@ -24,6 +24,11 @@ const raleway = Raleway({
   subsets: ["latin"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#FFF5F6",
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Délice Desserts | Pâtisserie Artisanale à Namur",
@@ -55,9 +60,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <head>
-        <meta name="theme-color" content="#FFF5F6" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="light-content" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body
         className={`${playfair.variable} ${raleway.variable} antialiased`}
