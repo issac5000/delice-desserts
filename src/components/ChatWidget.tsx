@@ -329,7 +329,7 @@ export default function ChatWidget() {
               onSubmit={handleSubmit}
               className="px-4 py-3 border-t border-gold/15 bg-cream/50"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center bg-vanilla border border-gold/20 rounded-full pl-5 pr-1.5 py-1.5 focus-within:border-gold/50 transition-colors">
                 <input
                   ref={inputRef}
                   type="text"
@@ -337,12 +337,12 @@ export default function ChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Tapez votre message..."
                   disabled={isStreaming}
-                  className="flex-1 bg-vanilla border border-gold/20 rounded-xl px-4 py-2.5 text-base sm:text-sm text-chocolate placeholder:text-chocolate-light/40 focus:outline-none focus:border-gold/50 transition-colors disabled:opacity-50"
+                  className="flex-1 bg-transparent text-base sm:text-sm text-chocolate placeholder:text-chocolate-light/40 focus:outline-none disabled:opacity-50"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isStreaming}
-                  className="w-10 h-10 rounded-xl bg-chocolate text-cream flex items-center justify-center hover:bg-chocolate-light transition-colors disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed flex-shrink-0"
+                  className="w-9 h-9 rounded-full bg-chocolate text-cream flex items-center justify-center hover:bg-chocolate-light transition-colors disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed flex-shrink-0"
                   aria-label="Envoyer"
                 >
                   <SendIcon />
