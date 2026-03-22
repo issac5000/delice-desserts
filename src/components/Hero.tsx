@@ -127,7 +127,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
         {/* CTA Buttons — spring bounce in */}
         <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
           <motion.a
-            href="#carte"
+            href="#reservation"
             initial={{ opacity: 0, y: 16, scale: 0.9 }}
             animate={ready ? { opacity: 1, y: 0, scale: 1 } : {}}
             transition={{
@@ -137,7 +137,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
             }}
             className="rounded-full bg-gradient-to-r from-gold to-gold-dark px-8 py-4 text-espresso text-xs sm:text-sm font-bold uppercase tracking-[0.16em] text-center hover:brightness-110 transition-all"
           >
-            Voir la carte
+            Réserver une table
           </motion.a>
           <motion.a
             href="#cookies"
