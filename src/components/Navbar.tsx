@@ -63,13 +63,13 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="#contact"
+              href="#reservation"
               className="rounded-full border border-gold/45 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-chocolate bg-cream hover:bg-gold hover:text-espresso transition-all"
             >
               Réserver
             </a>
             <a
-              href="#carte"
+              href="#cookies"
               className="rounded-full bg-gradient-to-r from-gold to-gold-dark px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-espresso hover:brightness-110 transition-all"
             >
               Commander
@@ -118,14 +118,14 @@ export default function Navbar() {
 
             <div className="max-w-md mx-auto grid grid-cols-2 gap-3 mt-6">
               <a
-                href="#contact"
+                href="#reservation"
                 onClick={() => setIsMobileOpen(false)}
                 className="rounded-full bg-cream text-espresso text-center px-4 py-3 text-xs font-bold uppercase tracking-[0.14em]"
               >
                 Réserver
               </a>
               <a
-                href="#carte"
+                href="#cookies"
                 onClick={() => setIsMobileOpen(false)}
                 className="rounded-full bg-gradient-to-r from-gold to-gold-dark text-espresso text-center px-4 py-3 text-xs font-bold uppercase tracking-[0.14em]"
               >

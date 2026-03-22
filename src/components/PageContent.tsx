@@ -21,6 +21,7 @@ import ChatWidget from "./ChatWidget";
 import CartWidget from "./CartWidget";
 import CookieBanner from "./CookieBanner";
 import CookieSection from "./CookieSection";
+import ReservationSection from "./ReservationSection";
 import { CartProvider } from "@/context/CartContext";
 
 export default function PageContent() {
@@ -50,6 +51,7 @@ export default function PageContent() {
         <Menu />
         <Gallery />
         <Testimonials />
+        <ReservationSection />
         <Contact />
         <Faq />
         <Footer />

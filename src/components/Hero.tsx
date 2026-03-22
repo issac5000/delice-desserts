@@ -140,7 +140,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
             Voir la carte
           </motion.a>
           <motion.a
-            href="#galerie"
+            href="#cookies"
             initial={{ opacity: 0, y: 16, scale: 0.9 }}
             animate={ready ? { opacity: 1, y: 0, scale: 1 } : {}}
             transition={{
@@ -150,7 +150,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
             }}
             className="rounded-full border border-cream/45 px-8 py-4 text-cream text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-center hover:border-gold-light hover:text-gold-light transition-all"
           >
-            Explorer le lieu
+            Commander des cookies
           </motion.a>
         </div>
       </motion.div>
