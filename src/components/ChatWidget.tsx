@@ -70,6 +70,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -84,8 +85,23 @@ export default function ChatWidget() {
   useEffect(() => {
     if (isOpen) {
       inputRef.current?.focus();
+      setShowBubble(false);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isOpen) setShowBubble(true);
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (showBubble) {
+      const hide = setTimeout(() => setShowBubble(false), 4000);
+      return () => clearTimeout(hide);
+    }
+  }, [showBubble]);
 
   const sendMessage = useCallback(
     async (content: string) => {
@@ -167,6 +183,24 @@ export default function ChatWidget() {
 
   return (
     <>
+      {/* Prompt bubble */}
+      <AnimatePresence>
+        {showBubble && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: -20, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 40, scale: 0.8 }}
+            transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            className="fixed bottom-[42px] right-[92px] z-50 bg-white rounded-2xl shadow-xl border border-gold/20 px-4 py-3 max-w-[220px]"
+          >
+            <p className="text-sm text-chocolate font-medium leading-snug">
+              Une question ? Je suis là pour vous !
+            </p>
+            <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-3 h-3 bg-white border-r border-b border-gold/20 rotate-[-45deg]" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating sphere button */}
       <motion.button
         initial={{ scale: 0, opacity: 0 }}
