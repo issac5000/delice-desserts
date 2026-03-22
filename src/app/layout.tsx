@@ -26,6 +26,7 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
+  themeColor: "#FFF5F6",
   title: "Délice Desserts | Pâtisserie Artisanale à Namur",
   description:
     "Crêpes, gaufres et desserts artisanaux au cœur de Namur. Une expérience gourmande unique, préparée avec passion et des ingrédients de qualité.",
