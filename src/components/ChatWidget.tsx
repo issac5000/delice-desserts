@@ -191,7 +191,7 @@ export default function ChatWidget() {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 40, scale: 0.8 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
-            className="fixed bottom-[42px] right-[92px] z-50 bg-white rounded-2xl shadow-xl border border-gold/20 px-4 py-3 max-w-[220px]"
+            className="fixed bottom-[42px] right-[106px] z-50 bg-white rounded-2xl shadow-xl border border-gold/20 px-4 py-3 max-w-[220px]"
           >
             <p className="text-sm text-chocolate font-medium leading-snug">
               Une question ? Je suis là pour vous !
