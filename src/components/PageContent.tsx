@@ -18,13 +18,17 @@ import Contact from "./Contact";
 import Faq from "./Faq";
 import Footer from "./Footer";
 import ChatWidget from "./ChatWidget";
+import CartWidget from "./CartWidget";
+import CookieBanner from "./CookieBanner";
+import CookieSection from "./CookieSection";
+import { CartProvider } from "@/context/CartContext";
 
 export default function PageContent() {
   const [splashDone, setSplashDone] = useState(false);
   const handleComplete = useCallback(() => setSplashDone(true), []);
 
   return (
-    <>
+    <CartProvider>
       {!splashDone && <SplashScreen onComplete={handleComplete} />}
       <main>
         <Navbar />
@@ -40,7 +44,9 @@ export default function PageContent() {
         <Specialties />
         <Cocktails />
         <QuoteSection />
+        <CookieBanner />
         <Ambiance />
+        <CookieSection />
         <Menu />
         <Gallery />
         <Testimonials />
@@ -48,7 +54,8 @@ export default function PageContent() {
         <Faq />
         <Footer />
       </main>
+      <CartWidget />
       <ChatWidget />
-    </>
+    </CartProvider>
   );
 }

@@ -2,9 +2,10 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Flame, Star } from "lucide-react";
+import { Flame, Star, ShoppingCart } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
-type Category = "crepes" | "gaufres" | "pancakes" | "boissons";
+type Category = "crepes" | "gaufres" | "pancakes" | "boissons" | "cookies";
 
 type MenuItem = {
   name: string;
@@ -19,6 +20,7 @@ const categories: { key: Category; label: string; emoji: string }[] = [
   { key: "gaufres", label: "Gaufres", emoji: "🧇" },
   { key: "pancakes", label: "Pancakes", emoji: "🥮" },
   { key: "boissons", label: "Boissons", emoji: "☕" },
+  { key: "cookies", label: "Cookies", emoji: "🍪" },
 ];
 
 const menuItems: Record<Category, MenuItem[]> = {
@@ -149,10 +151,55 @@ const menuItems: Record<Category, MenuItem[]> = {
         "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=900&auto=format&fit=crop",
     },
   ],
+  cookies: [
+    {
+      name: "Cookie Chocolat Noir Intense",
+      description:
+        "Chocolat noir belge 70%, fleur de sel de Guérande, cœur fondant.",
+      price: "4.50",
+      popular: true,
+      image:
+        "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1000&auto=format&fit=crop",
+    },
+    {
+      name: "Cookie Pistache & Framboise",
+      description:
+        "Crème de pistache, éclats de framboises lyophilisées, chocolat blanc.",
+      price: "5.00",
+      image:
+        "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=900&auto=format&fit=crop",
+    },
+    {
+      name: "Cookie Caramel Beurre Salé",
+      description:
+        "Caramel beurre salé maison, pépites de chocolat au lait, spéculoos.",
+      price: "4.50",
+      image:
+        "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=900&auto=format&fit=crop",
+    },
+    {
+      name: "Cookie Noisette & Praliné",
+      description:
+        "Praliné noisette maison, noisettes torréfiées entières, chocolat noir.",
+      price: "5.50",
+      popular: true,
+      image:
+        "https://images.unsplash.com/photo-1625876981655-01db12941674?q=80&w=900&auto=format&fit=crop",
+    },
+    {
+      name: "Cookie Classique Vanille",
+      description:
+        "Vanille de Madagascar, pépites de chocolat noir et au lait.",
+      price: "3.50",
+      image:
+        "https://images.unsplash.com/photo-1607114910007-1c751a5b4e3e?q=80&w=900&auto=format&fit=crop",
+    },
+  ],
 };
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState<Category>("crepes");
+  const { dispatch } = useCart();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-120px" });
 
@@ -255,6 +302,27 @@ export default function Menu() {
                         {item.price}
                         <span className="text-sm text-chocolate/40 ml-1">EUR</span>
                       </p>
+                      {activeCategory === "cookies" && (
+                        <button
+                          onClick={() =>
+                            dispatch({
+                              type: "ADD_ITEM",
+                              payload: {
+                                id: item.name
+                                  .toLowerCase()
+                                  .replace(/[^a-z0-9]+/g, "-"),
+                                name: item.name,
+                                price: parseFloat(item.price),
+                                image: item.image,
+                              },
+                            })
+                          }
+                          className="inline-flex items-center gap-1.5 rounded-full bg-chocolate text-cream px-3.5 py-2 text-xs font-semibold hover:bg-gold-dark transition-colors cursor-pointer"
+                        >
+                          <ShoppingCart size={13} />
+                          Ajouter
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
