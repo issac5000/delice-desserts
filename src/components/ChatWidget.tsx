@@ -222,7 +222,7 @@ export default function ChatWidget() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-40 bg-espresso/30 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-espresso/30 backdrop-blur-sm"
           />
         )}
       </AnimatePresence>
