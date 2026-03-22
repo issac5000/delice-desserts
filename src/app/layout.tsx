@@ -26,7 +26,6 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  themeColor: "#FFF5F6",
   title: "Délice Desserts | Pâtisserie Artisanale à Namur",
   description:
     "Crêpes, gaufres et desserts artisanaux au cœur de Namur. Une expérience gourmande unique, préparée avec passion et des ingrédients de qualité.",
@@ -55,6 +54,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
+      <head>
+        <meta name="theme-color" content="#FFF5F6" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="light-content" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+      </head>
       <body
         className={`${playfair.variable} ${raleway.variable} antialiased`}
       >
