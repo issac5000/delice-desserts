@@ -35,6 +35,7 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  background-color: #2D1F2D;
 }
 
 body {
