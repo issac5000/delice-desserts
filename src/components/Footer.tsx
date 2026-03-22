@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="text-center lg:text-left">
             <p className="text-xs uppercase tracking-[0.22em] text-cream/55 mb-4">Navigation</p>
             <div className="grid grid-cols-2 gap-2">
               {links.map((link) => (

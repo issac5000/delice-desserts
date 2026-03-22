@@ -49,14 +49,14 @@ export default function Cocktails() {
             <span className="section-badge">Cocktails &amp; Boissons</span>
 
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl text-chocolate font-bold mt-5 leading-[1.1]"
+              className="text-4xl md:text-5xl lg:text-6xl text-chocolate font-bold mt-5 leading-[1.1] text-center lg:text-left"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               Des Mojitos{" "}
               <span className="text-gradient italic">d&apos;Exception</span>
             </h2>
 
-            <p className="text-chocolate/65 text-base md:text-lg mt-6 leading-relaxed max-w-lg">
+            <p className="text-chocolate/65 text-base md:text-lg mt-6 leading-relaxed max-w-lg text-center lg:text-left mx-auto lg:mx-0">
               Parce que la gourmandise ne s&apos;arrête pas au dessert, Délice
               vous propose une carte de cocktails rafraîchissants pensés pour
               accompagner chaque bouchée sucrée.

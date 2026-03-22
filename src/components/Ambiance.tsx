@@ -72,17 +72,17 @@ export default function Ambiance() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="flex flex-col justify-center"
           >
-            <span className="section-badge self-start">Notre Ambiance</span>
+            <span className="section-badge self-center lg:self-start">Notre Ambiance</span>
 
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl text-chocolate font-bold mt-5 leading-[1.1]"
+              className="text-4xl md:text-5xl lg:text-6xl text-chocolate font-bold mt-5 leading-[1.1] text-center lg:text-left"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               Votre Moment{" "}
               <span className="text-gradient italic">de Douceur</span>
             </h2>
 
-            <p className="text-chocolate/65 text-base md:text-lg mt-6 leading-relaxed max-w-lg">
+            <p className="text-chocolate/65 text-base md:text-lg mt-6 leading-relaxed max-w-lg text-center lg:text-left mx-auto lg:mx-0">
               Bien plus qu&apos;une pâtisserie, Délice est un refuge gourmand où
               l&apos;on vient se poser, respirer et profiter d&apos;un instant
               suspendu entre élégance et simplicité.
