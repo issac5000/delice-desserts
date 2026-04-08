@@ -31,14 +31,14 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         >
           {/* Bande du haut */}
           <motion.div
-            className="absolute top-0 left-0 right-0 h-1/2 bg-[#1A0E18]"
+            className="absolute top-0 left-0 right-0 h-1/2 bg-[#FFF5F6]"
             animate={phase === "opening" ? { y: "-100%" } : { y: 0 }}
             transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
           />
 
           {/* Bande du bas */}
           <motion.div
-            className="absolute bottom-0 left-0 right-0 h-1/2 bg-[#1A0E18]"
+            className="absolute bottom-0 left-0 right-0 h-1/2 bg-[#FFF5F6]"
             animate={phase === "opening" ? { y: "100%" } : { y: 0 }}
             transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
           />
@@ -52,7 +52,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
             {/* Spinner ring */}
             <div className="relative w-32 h-32 flex items-center justify-center">
               <motion.div
-                className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#C8A97E] border-r-[#C8A97E]/40"
+                className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#D07A94] border-r-[#D07A94]/40"
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
               />
@@ -73,7 +73,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
                   alt="Delice Desserts"
                   width={72}
                   height={72}
-                  className="object-contain invert drop-shadow-[0_0_16px_rgba(200,169,126,0.6)]"
+                  className="object-contain drop-shadow-[0_0_16px_rgba(208,122,148,0.4)]"
                   priority
                 />
               </motion.div>
