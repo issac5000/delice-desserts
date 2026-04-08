@@ -7,25 +7,25 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const galleryItems = [
   {
-    src: "/1.png",
+    src: "/1.webp",
     alt: "Crepes artisanales",
     className: "md:col-span-8",
     tag: "Signature",
   },
   {
-    src: "/3.png",
+    src: "/3.webp",
     alt: "Pancakes moelleux",
     className: "md:col-span-4",
     tag: "Brunch",
   },
   {
-    src: "/4.png",
+    src: "/4.webp",
     alt: "Presentation gourmande",
     className: "md:col-span-4",
     tag: "Dressage",
   },
   {
-    src: "/5.png",
+    src: "/5.webp",
     alt: "Desserts chocolat",
     className: "md:col-span-8",
     tag: "Chocolate",
@@ -33,18 +33,20 @@ const galleryItems = [
 ];
 
 const stripImages = [
-  "/1.png",
-  "/2.png",
-  "/3.png",
-  "/4.png",
-  "/5.png",
-  "/6.png",
-  "/7.png",
+  "/1.webp",
+  "/2.webp",
+  "/3.webp",
+  "/4.webp",
+  "/5.webp",
+  "/6.webp",
+  "/7.webp",
 ];
 
 export default function Gallery() {
   const ref = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-120px" });
+  const isCarouselVisible = useInView(carouselRef, { margin: "200px" });
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
 
   const closeLightbox = useCallback(() => setLightbox(null), []);
@@ -110,7 +112,7 @@ export default function Gallery() {
               {/* Instagram screenshot — precise fit inside screen area */}
               <div className="absolute top-[0.8%] bottom-[0.8%] left-[2.2%] right-[2.2%] rounded-[13%] overflow-hidden z-0">
                 <Image
-                  src="/instagram.PNG"
+                  src="/instagram.webp"
                   alt="Délice Desserts Instagram"
                   width={1179}
                   height={2556}
@@ -146,7 +148,7 @@ export default function Gallery() {
                 onClick={() => setLightbox({ src: item.src, alt: item.alt })}
                 className={`group premium-ring rounded-3xl overflow-hidden relative cursor-pointer ${item.className}`}
               >
-                <div className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-700" style={{ backgroundImage: `url('${item.src}')` }} />
+                <Image src={item.src} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-center group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(26,14,24,0.72)_100%)]" />
                 <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-cream/85 text-chocolate text-[10px] uppercase tracking-[0.14em] font-semibold">
                   {item.tag}
@@ -164,13 +166,14 @@ export default function Gallery() {
 
         {/* Strip carousel */}
         <motion.div
+          ref={carouselRef}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.45 }}
           className="mt-10 overflow-hidden"
         >
           <motion.div
-            animate={{ x: [0, -1200] }}
+            animate={isCarouselVisible ? { x: [0, -1200] } : undefined}
             transition={{ repeat: Infinity, duration: 28, ease: "linear" }}
             className="flex gap-4"
           >
@@ -178,9 +181,9 @@ export default function Gallery() {
               <div
                 key={`${src}-${i}`}
                 onClick={() => setLightbox({ src, alt: "Delice Desserts" })}
-                className="w-44 h-28 rounded-2xl overflow-hidden border border-gold/20 flex-shrink-0 cursor-pointer"
+                className="relative w-44 h-28 rounded-2xl overflow-hidden border border-gold/20 flex-shrink-0 cursor-pointer"
               >
-                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${src}')` }} />
+                <Image src={src} alt="Delice Desserts" fill sizes="176px" className="object-cover object-center" />
               </div>
             ))}
           </motion.div>

@@ -1,28 +1,33 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import SplashScreen from "./SplashScreen";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import WaveDivider from "./WaveDivider";
-import Story from "./Story";
-import Marquee from "./Marquee";
-import Specialties from "./Specialties";
-import Cocktails from "./Cocktails";
-import Ambiance from "./Ambiance";
-import Menu from "./Menu";
-import QuoteSection from "./QuoteSection";
-import Gallery from "./Gallery";
-import Testimonials from "./Testimonials";
-import Contact from "./Contact";
-import Faq from "./Faq";
-import Footer from "./Footer";
-import ChatWidget from "./ChatWidget";
-import CartWidget from "./CartWidget";
-import CookieBanner from "./CookieBanner";
-import CookieSection from "./CookieSection";
-import ReservationSection from "./ReservationSection";
 import { CartProvider } from "@/context/CartContext";
+
+// Lazy load below-fold sections
+const Story = dynamic(() => import("./Story"));
+const Marquee = dynamic(() => import("./Marquee"));
+const Specialties = dynamic(() => import("./Specialties"));
+const Cocktails = dynamic(() => import("./Cocktails"));
+const Ambiance = dynamic(() => import("./Ambiance"));
+const Menu = dynamic(() => import("./Menu"));
+const QuoteSection = dynamic(() => import("./QuoteSection"));
+const Gallery = dynamic(() => import("./Gallery"));
+const Testimonials = dynamic(() => import("./Testimonials"));
+const Contact = dynamic(() => import("./Contact"));
+const Faq = dynamic(() => import("./Faq"));
+const Footer = dynamic(() => import("./Footer"));
+const CookieBanner = dynamic(() => import("./CookieBanner"));
+const CookieSection = dynamic(() => import("./CookieSection"));
+const ReservationSection = dynamic(() => import("./ReservationSection"));
+
+// Lazy load widgets (not needed at initial render)
+const ChatWidget = dynamic(() => import("./ChatWidget"), { ssr: false });
+const CartWidget = dynamic(() => import("./CartWidget"), { ssr: false });
 
 export default function PageContent() {
   const [splashDone, setSplashDone] = useState(false);

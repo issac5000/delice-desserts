@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const specialties = [
   {
@@ -89,9 +90,12 @@ export default function Specialties() {
               className="group premium-ring rounded-[28px] overflow-hidden bg-cream/70 border border-gold/20"
             >
               <div className="relative h-72 overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url('${item.image}')` }}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,14,24,0.06),rgba(26,14,24,0.72))]" />
                 <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-cream/80 text-chocolate flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

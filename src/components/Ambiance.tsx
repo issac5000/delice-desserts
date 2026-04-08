@@ -52,11 +52,12 @@ export default function Ambiance() {
             <div className="relative rounded-[28px] overflow-hidden border border-gold/20 shadow-[0_24px_60px_rgba(45,31,45,0.12)]">
               <video
                 className="w-full aspect-[9/11] object-cover"
-                src="/video2.mov"
+                src="/video2.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="none"
               />
               <div className="absolute inset-0 rounded-[28px] ring-1 ring-inset ring-white/10 pointer-events-none" />
             </div>

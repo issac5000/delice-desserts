@@ -4,6 +4,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Flame, Star, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import Image from "next/image";
 
 type Category = "crepes" | "gaufres" | "pancakes" | "boissons" | "cookies";
 
@@ -54,7 +55,7 @@ const menuItems: Record<Category, MenuItem[]> = {
       name: "Crêpe Classique",
       description: "Sucre, citron ou confiture artisanale au choix.",
       price: "5.50",
-      image: "/hero.png",
+      image: "/hero.webp",
     },
   ],
   gaufres: [
@@ -267,9 +268,12 @@ export default function Menu() {
                 <div className="flex flex-col sm:flex-row">
                   {/* Image */}
                   <div className="relative sm:w-48 h-48 sm:h-auto shrink-0 overflow-hidden">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                      style={{ backgroundImage: `url('${item.image}')` }}
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 192px"
+                      className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
                     />
                     {item.popular && (
                       <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-gold px-2.5 py-1 text-espresso text-[10px] font-bold tracking-[0.1em] uppercase">

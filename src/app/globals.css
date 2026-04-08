@@ -164,6 +164,8 @@ main::before {
   animation-name: circleSway;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  will-change: transform;
+  contain: layout style;
 }
 
 .circle-orb {
@@ -179,6 +181,7 @@ main::before {
   animation-name: circlePulse;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {

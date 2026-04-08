@@ -2,8 +2,22 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import dynamic from "next/dynamic";
+
+const MarkdownRenderer = dynamic(
+  () => import("react-markdown").then((mod) => {
+    const ReactMarkdown = mod.default;
+    return import("remark-gfm").then((gfm) => {
+      const remarkGfm = gfm.default;
+      return {
+        default: ({ children }: { children: string }) => (
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{children}</ReactMarkdown>
+        ),
+      };
+    });
+  }),
+  { ssr: false, loading: () => <span>...</span> }
+);
 
 interface Message {
   role: "user" | "assistant";
@@ -326,9 +340,9 @@ export default function ChatWidget() {
                   >
                     {msg.role === "assistant" ? (
                       <div className="prose prose-sm max-w-none prose-headings:text-chocolate prose-headings:font-semibold prose-headings:mt-2 prose-headings:mb-1 prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0.5 prose-strong:text-chocolate">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        <MarkdownRenderer>
                           {msg.content || (isStreaming && i === messages.length - 1 ? "..." : "")}
-                        </ReactMarkdown>
+                        </MarkdownRenderer>
                       </div>
                     ) : (
                       msg.content

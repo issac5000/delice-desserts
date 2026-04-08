@@ -8,13 +8,13 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
   const [phase, setPhase] = useState<"loading" | "opening" | "done">("loading");
 
   useEffect(() => {
-    // Phase 1: spinner avec logo (2s)
-    const t1 = setTimeout(() => setPhase("opening"), 2000);
-    // Phase 2: bandes qui s'ouvrent (1s) puis terminé
+    // Phase 1: spinner avec logo (1s)
+    const t1 = setTimeout(() => setPhase("opening"), 1000);
+    // Phase 2: bandes qui s'ouvrent (0.8s) puis terminé
     const t2 = setTimeout(() => {
       setPhase("done");
       onComplete();
-    }, 3200);
+    }, 1800);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);

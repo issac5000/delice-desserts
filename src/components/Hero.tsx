@@ -33,9 +33,13 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
   return (
     <section id="accueil" ref={ref} className="relative min-h-screen pb-32 overflow-hidden">
       <motion.div style={{ y: yBg, scale: scaleBg }} className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-[center_60%]"
-          style={{ backgroundImage: "url('/hero.png')" }}
+        <Image
+          src="/hero.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_60%]"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(255,226,236,0.24),transparent_36%),radial-gradient(circle_at_80%_12%,rgba(244,184,200,0.3),transparent_34%)]" />
         <div className="absolute inset-0 bg-gradient-to-br from-espresso/92 via-espresso/64 to-espresso/88" />

@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Sparkles, Heart, Award } from "lucide-react";
+import Image from "next/image";
 
 const values = [
   {
@@ -64,11 +65,12 @@ export default function Story() {
             className="relative"
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url('/comptoire.png')`,
-                }}
+              <Image
+                src="/comptoire.webp"
+                alt="Comptoir Délice Desserts"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 to-transparent" />
             </div>
