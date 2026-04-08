@@ -46,8 +46,11 @@ body {
     linear-gradient(180deg, #fff9fa 0%, #fff2f4 42%, #fff7f8 100%);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
-  overflow-x: hidden;
   position: relative;
+}
+
+.overflow-x-hidden-wrapper {
+  overflow-x: hidden;
 }
 
 main {

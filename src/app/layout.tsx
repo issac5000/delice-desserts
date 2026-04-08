@@ -61,37 +61,39 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body
         className={`${playfair.variable} ${raleway.variable} antialiased`}
       >
-        <div className="circle-layer" aria-hidden="true">
-          {circles.map((c, i) => (
-            <span
-              key={`${c.left}-${c.size}-${i}`}
-              className="circle-item"
-              style={{
-                left: `${c.left}%`,
-                top: `${c.top}%`,
-                animationDuration: `${c.drift}s`,
-                animationDelay: `${c.delay}s`,
-              }}
-            >
+        <div className="overflow-x-hidden-wrapper">
+          <div className="circle-layer" aria-hidden="true">
+            {circles.map((c, i) => (
               <span
-                className="circle-orb"
+                key={`${c.left}-${c.size}-${i}`}
+                className="circle-item"
                 style={{
-                  width: `${c.size}px`,
-                  height: `${c.size}px`,
-                  opacity: c.opacity,
-                  animationDuration: `${c.drift + 6}s`,
+                  left: `${c.left}%`,
+                  top: `${c.top}%`,
+                  animationDuration: `${c.drift}s`,
                   animationDelay: `${c.delay}s`,
                 }}
-              />
-            </span>
-          ))}
+              >
+                <span
+                  className="circle-orb"
+                  style={{
+                    width: `${c.size}px`,
+                    height: `${c.size}px`,
+                    opacity: c.opacity,
+                    animationDuration: `${c.drift + 6}s`,
+                    animationDelay: `${c.delay}s`,
+                  }}
+                />
+              </span>
+            ))}
+          </div>
+          {children}
         </div>
-        {children}
       </body>
     </html>
   );
