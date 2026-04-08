@@ -52,7 +52,7 @@ export default function PageContent() {
         <QuoteSection />
         <CookieBanner />
         <Ambiance />
-        <CookieSection />
+        {/* <CookieSection /> */}
         <Menu />
         <Gallery />
         <Testimonials />
@@ -61,7 +61,7 @@ export default function PageContent() {
         <Faq />
         <Footer />
       </main>
-      <CartWidget />
+      {/* <CartWidget /> */}
       <ChatWidget />
     </CartProvider>
   );

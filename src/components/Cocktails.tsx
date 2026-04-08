@@ -2,29 +2,32 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { GlassWater, Sparkles, Cherry } from "lucide-react";
+import { GlassWater, Sparkles, Cherry, Flower2 } from "lucide-react";
 
 const highlights = [
   {
     icon: GlassWater,
-    title: "Mojitos Signature",
-    desc: "Classique, fruits rouges, mangue, passion\u2026 notre carte de mojitos revisite le cocktail mythique avec des saveurs uniques.",
+    title: "Classique",
     gradient: "from-[#D07A94]/20 to-[#F2C4D0]/10",
     glow: "rgba(208, 122, 148, 0.35)",
   },
   {
     icon: Cherry,
-    title: "Pour Tous les Go\u00fbts",
-    desc: "Avec ou sans alcool, fruités ou acidulés, chaque cocktail est préparé minute avec des ingrédients frais.",
+    title: "Fraise",
     gradient: "from-[#E8A0B4]/20 to-[#FADCE6]/10",
     glow: "rgba(232, 160, 180, 0.35)",
   },
   {
     icon: Sparkles,
-    title: "L\u2019Art du M\u00e9lange",
-    desc: "Nos baristas imaginent des associations originales entre desserts et cocktails pour une expérience complète.",
+    title: "Golden Passion",
     gradient: "from-[#C8A97E]/20 to-[#F2C4D0]/10",
     glow: "rgba(200, 169, 126, 0.35)",
+  },
+  {
+    icon: Flower2,
+    title: "Violette",
+    gradient: "from-[#B8A0D0]/20 to-[#E0D0F0]/10",
+    glow: "rgba(160, 140, 200, 0.35)",
   },
 ];
 
@@ -46,7 +49,7 @@ export default function Cocktails() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <span className="section-badge">Cocktails &amp; Boissons</span>
+            <span className="section-badge">Mocktails &amp; Boissons</span>
 
             <h2
               className="text-4xl md:text-5xl lg:text-6xl text-chocolate font-bold mt-5 leading-[1.1] text-center lg:text-left"
@@ -58,12 +61,12 @@ export default function Cocktails() {
 
             <p className="text-chocolate/65 text-base md:text-lg mt-6 leading-relaxed max-w-lg text-center lg:text-left mx-auto lg:mx-0">
               Parce que la gourmandise ne s&apos;arrête pas au dessert, Délice
-              vous propose une carte de cocktails rafraîchissants pensés pour
+              vous propose une carte de mocktails rafraîchissants pensés pour
               accompagner chaque bouchée sucrée.
             </p>
 
             {/* Cards — side by side */}
-            <div className="mt-10 grid grid-cols-3 gap-3">
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
               {highlights.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -114,9 +117,6 @@ export default function Cocktails() {
                     >
                       {item.title}
                     </h3>
-                    <p className="text-chocolate/55 text-xs leading-relaxed">
-                      {item.desc}
-                    </p>
                   </div>
                 </motion.div>
               ))}

@@ -119,7 +119,7 @@ export default function Story() {
               d&apos;exception.
             </p>
             <p className="text-lg text-chocolate/80 leading-relaxed">
-              Que vous soyez amateur de classiques belges ou en quête de
+              Que vous soyez amateur de classiques ou en quête de
               découvertes gustatives, notre carte saura ravir vos papilles
               et éveiller vos sens.
             </p>

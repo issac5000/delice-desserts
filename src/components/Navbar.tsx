@@ -81,7 +81,9 @@ export default function Navbar() {
               Réserver
             </a>
             <a
-              href="#cookies"
+              href="https://delicedesserts.com/collections/all"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-gradient-to-r from-gold to-gold-dark px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-espresso hover:brightness-110 transition-all"
             >
               Commander
@@ -89,7 +91,7 @@ export default function Navbar() {
           </div>
 
           <div className="lg:hidden flex items-center gap-2">
-            {/* Cart icon — mobile only */}
+            {/* Cart icon — disabled while CartWidget is commented out
             <button
               onClick={() => dispatch({ type: "TOGGLE_CART" })}
               className={`relative p-2 transition-colors ${
@@ -104,6 +106,7 @@ export default function Navbar() {
                 </span>
               )}
             </button>
+            */}
 
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -153,7 +156,9 @@ export default function Navbar() {
                 Réserver
               </a>
               <a
-                href="#cookies"
+                href="https://delicedesserts.com/collections/all"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileOpen(false)}
                 className="rounded-full bg-gradient-to-r from-gold to-gold-dark text-espresso text-center px-4 py-3 text-xs font-bold uppercase tracking-[0.14em]"
               >

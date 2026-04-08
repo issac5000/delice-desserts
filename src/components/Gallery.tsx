@@ -14,7 +14,7 @@ const galleryItems = [
   },
   {
     src: "/3.webp",
-    alt: "Pancakes moelleux",
+    alt: "Pancakes américains",
     className: "md:col-span-4",
     tag: "Brunch",
   },

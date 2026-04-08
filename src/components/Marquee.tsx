@@ -3,7 +3,7 @@
 const topLine = [
   "Crêpes Signature",
   "Gaufres Belges",
-  "Pancakes Moelleux",
+  "Pancakes Américains",
   "Chocolat Belge",
   "Caramel Spéculoos",
   "Fruits Frais",

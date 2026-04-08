@@ -73,7 +73,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
                   alt="Delice Desserts"
                   width={72}
                   height={72}
-                  className="object-contain drop-shadow-[0_0_16px_rgba(208,122,148,0.4)]"
+                  className="object-contain brightness-0 drop-shadow-[0_0_16px_rgba(208,122,148,0.4)]"
                   priority
                 />
               </motion.div>

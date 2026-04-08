@@ -72,7 +72,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
         <motion.div
           {...fadeUp(0.3, 50)}
           animate={ready ? show : {}}
-          className="relative z-20 -mt-16 md:-mt-20 text-center"
+          className="relative z-20 -mt-24 md:-mt-36 text-center"
         >
           <h1 className="text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] text-cream font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
             Desserts
@@ -129,7 +129,9 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
             Réserver une table
           </motion.a>
           <motion.a
-            href="#cookies"
+            href="https://delicedesserts.com/collections/all"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 16, scale: 0.9 }}
             animate={ready ? { opacity: 1, y: 0, scale: 1 } : {}}
             transition={{

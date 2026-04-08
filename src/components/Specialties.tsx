@@ -21,9 +21,9 @@ const specialties = [
       "https://images.unsplash.com/photo-1562376552-0d160a2f238d?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Pancakes Moelleux",
+    title: "Pancakes Américains",
     description:
-      "Épais, légers et ultra-fondants, servis en composition premium sucrée.",
+      "Pancakes épais et moelleux à l'américaine, dorés à la perfection, servis chauds avec votre choix de topping.",
     image:
       "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1200&auto=format&fit=crop",
   },
