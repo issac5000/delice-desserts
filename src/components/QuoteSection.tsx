@@ -22,10 +22,10 @@ export default function QuoteSection() {
   } as const;
 
   const word = {
-    hidden: { opacity: 0, filter: "blur(8px)" },
+    hidden: { opacity: 0, y: 8 },
     show: {
       opacity: 1,
-      filter: "blur(0px)",
+      y: 0,
       transition: { duration: 0.32, ease: "easeOut" },
     },
   } as const;

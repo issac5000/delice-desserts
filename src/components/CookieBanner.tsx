@@ -15,40 +15,26 @@ export default function CookieBanner() {
       {/* Background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(208,122,148,0.25),transparent_50%),radial-gradient(circle_at_80%_50%,rgba(232,160,180,0.2),transparent_45%)]" />
 
-      {/* Scrolling cookie emojis */}
+      {/* Scrolling cookie emojis — pure CSS */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.07]">
-        <motion.div
-          animate={{ x: [0, -1600] }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 28,
-            ease: "linear",
-          }}
-          className="flex w-max gap-16 absolute top-2"
-        >
-          {Array.from({ length: 20 }).map((_, i) => (
-            <span key={i} className="text-5xl">
-              🍪
-            </span>
-          ))}
-        </motion.div>
-        <motion.div
-          animate={{ x: [-1200, 0] }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 24,
-            ease: "linear",
-          }}
-          className="flex w-max gap-16 absolute bottom-2"
-        >
-          {Array.from({ length: 20 }).map((_, i) => (
-            <span key={i} className="text-4xl">
-              🍪
-            </span>
-          ))}
-        </motion.div>
+        <div className="marquee-track absolute top-2 left-0 right-0">
+          <div className="marquee-scroll marquee-left" style={{ animationDuration: "28s" }}>
+            {Array.from({ length: 20 }).map((_, i) => (
+              <span key={i} className="text-5xl flex-shrink-0">
+                🍪
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="marquee-track absolute bottom-2 left-0 right-0">
+          <div className="marquee-scroll marquee-right" style={{ animationDuration: "24s" }}>
+            {Array.from({ length: 20 }).map((_, i) => (
+              <span key={i} className="text-4xl flex-shrink-0">
+                🍪
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 relative text-center">

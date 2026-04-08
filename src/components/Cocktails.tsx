@@ -67,13 +67,12 @@ export default function Cocktails() {
               {highlights.map((item, i) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-                  animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{
                     duration: 0.7,
                     delay: 0.25 + i * 0.15,
                     ease,
-                    filter: { duration: 0.5, delay: 0.25 + i * 0.15 },
                   }}
                   className="group relative rounded-2xl p-4 cursor-default overflow-hidden text-center
                     bg-white/60 backdrop-blur-sm

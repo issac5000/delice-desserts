@@ -7,14 +7,9 @@ import { ChevronDown } from "lucide-react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const blurReveal = (delay: number, y = 30) => ({
-  initial: { opacity: 0, y, filter: "blur(12px)" },
-  transition: {
-    duration: 1,
-    delay,
-    ease,
-    filter: { duration: 0.8, delay },
-  },
+const fadeUp = (delay: number, y = 30) => ({
+  initial: { opacity: 0, y },
+  transition: { duration: 1, delay, ease },
 });
 
 export default function Hero({ ready = false }: { ready?: boolean }) {
@@ -28,11 +23,11 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
   const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.14]);
   const fade = useTransform(scrollYProgress, [0, 0.78], [1, 0]);
 
-  const show = { opacity: 1, y: 0, filter: "blur(0px)" };
+  const show = { opacity: 1, y: 0 };
 
   return (
     <section id="accueil" ref={ref} className="relative min-h-screen pb-32 overflow-hidden">
-      <motion.div style={{ y: yBg, scale: scaleBg }} className="absolute inset-0">
+      <motion.div style={{ y: yBg, scale: scaleBg }} className="absolute inset-0 will-change-transform">
         <Image
           src="/hero.webp"
           alt=""
@@ -45,30 +40,21 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
         <div className="absolute inset-0 bg-gradient-to-br from-espresso/92 via-espresso/64 to-espresso/88" />
       </motion.div>
 
-      {/* Floating orbs */}
+      {/* Floating orbs — CSS only */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ y: [0, -24, 0], x: [0, 18, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[18%] left-[9%] w-64 h-64 rounded-full bg-gold/16 blur-3xl"
-        />
-        <motion.div
-          animate={{ y: [0, 18, 0], x: [0, -18, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[18%] right-[10%] w-80 h-80 rounded-full bg-rose/16 blur-3xl"
-        />
+        <div className="absolute top-[18%] left-[9%] w-64 h-64 rounded-full bg-gold/16 blur-3xl animate-float-soft" />
+        <div className="absolute bottom-[18%] right-[10%] w-80 h-80 rounded-full bg-rose/16 blur-3xl animate-float" />
       </div>
 
       <motion.div style={{ opacity: fade }} className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 -mt-10">
-        {/* Logo — scale + blur reveal */}
+        {/* Logo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.6, filter: "blur(20px)" }}
-          animate={ready ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={ready ? { opacity: 1, scale: 1 } : {}}
           transition={{
             duration: 1.1,
             ease,
             scale: { duration: 1.2, ease: [0.34, 1.56, 0.64, 1] as const },
-            filter: { duration: 0.9 },
           }}
           className="relative z-0"
         >
@@ -82,9 +68,9 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
           />
         </motion.div>
 
-        {/* Title "Desserts" — blur reveal from below */}
+        {/* Title "Desserts" */}
         <motion.div
-          {...blurReveal(0.3, 50)}
+          {...fadeUp(0.3, 50)}
           animate={ready ? show : {}}
           className="relative z-20 -mt-16 md:-mt-20 text-center"
         >
@@ -93,16 +79,15 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
           </h1>
         </motion.div>
 
-        {/* "Haute Gourmandise" — separate blur reveal with horizontal spread */}
+        {/* "Haute Gourmandise" */}
         <motion.span
-          initial={{ opacity: 0, y: 20, scale: 0.9, filter: "blur(16px)" }}
-          animate={ready ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" } : {}}
+          initial={{ opacity: 0, y: 20, scale: 0.9 }}
+          animate={ready ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{
             duration: 1,
             delay: 0.55,
             ease,
             scale: { duration: 0.9, delay: 0.55, ease: [0.34, 1.56, 0.64, 1] as const },
-            filter: { duration: 0.7, delay: 0.55 },
           }}
           className="block text-gradient italic text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] font-bold mt-1 sm:-mt-2 md:-mt-3 relative z-20 text-center"
           style={{ fontFamily: "var(--font-playfair)" }}
@@ -120,7 +105,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
 
         {/* Description */}
         <motion.p
-          {...blurReveal(0.85, 20)}
+          {...fadeUp(0.85, 20)}
           animate={ready ? show : {}}
           className="mt-6 text-cream/85 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed text-center"
         >
@@ -128,7 +113,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
           contemporaine. Chaque assiette est pensée pour être mémorisable.
         </motion.p>
 
-        {/* CTA Buttons — spring bounce in */}
+        {/* CTA Buttons */}
         <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
           <motion.a
             href="#reservation"
@@ -167,9 +152,9 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-cream/50 text-[10px] tracking-[0.35em] uppercase">Scroll</span>
-        <motion.div animate={{ y: [0, 7, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+        <div className="animate-bounce">
           <ChevronDown size={20} className="text-gold-light" />
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

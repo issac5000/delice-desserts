@@ -44,9 +44,7 @@ const stripImages = [
 
 export default function Gallery() {
   const ref = useRef<HTMLDivElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-120px" });
-  const isCarouselVisible = useInView(carouselRef, { margin: "200px" });
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
 
   const closeLightbox = useCallback(() => setLightbox(null), []);
@@ -103,8 +101,8 @@ export default function Gallery() {
         <div className="grid lg:grid-cols-[auto_1fr] gap-8 lg:gap-10 items-start">
           {/* iPhone mockup */}
           <motion.div
-            initial={{ opacity: 0, x: -40, filter: "blur(10px)" }}
-            animate={isInView ? { opacity: 1, x: 0, filter: "blur(0px)" } : {}}
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
             className="mx-auto lg:mx-0 lg:sticky lg:top-28"
           >
@@ -164,19 +162,14 @@ export default function Gallery() {
           </motion.div>
         </div>
 
-        {/* Strip carousel */}
+        {/* Strip carousel — pure CSS */}
         <motion.div
-          ref={carouselRef}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="mt-10 overflow-hidden"
+          className="mt-10 marquee-track"
         >
-          <motion.div
-            animate={isCarouselVisible ? { x: [0, -1200] } : undefined}
-            transition={{ repeat: Infinity, duration: 28, ease: "linear" }}
-            className="flex gap-4"
-          >
+          <div className="marquee-scroll marquee-left" style={{ animationDuration: "28s", gap: "1rem" }}>
             {[...stripImages, ...stripImages, ...stripImages].map((src, i) => (
               <div
                 key={`${src}-${i}`}
@@ -186,7 +179,7 @@ export default function Gallery() {
                 <Image src={src} alt="Delice Desserts" fill sizes="176px" className="object-cover object-center" />
               </div>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Instagram CTA */}

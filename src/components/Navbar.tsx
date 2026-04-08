@@ -21,8 +21,17 @@ export default function Navbar() {
   const { totalItems } = getCartTotals(state.items);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -39,9 +48,9 @@ export default function Navbar() {
         <div
           className={`max-w-7xl mx-auto rounded-full border px-4 sm:px-6 h-16 flex items-center justify-between transition-all duration-400 ${
             isScrolled
-              ? "bg-cream/90 border-gold/25 shadow-[0_12px_42px_rgba(45,31,45,0.16)]"
-              : "bg-chocolate/45 border-cream/25"
-          } backdrop-blur-xl`}
+              ? "bg-cream/95 border-gold/25 shadow-[0_12px_42px_rgba(45,31,45,0.16)] backdrop-blur-md"
+              : "bg-chocolate/60 border-cream/25 backdrop-blur-md"
+          }`}
         >
           <a href="#accueil" className="flex items-center gap-2">
             <span className="text-xl sm:text-2xl font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
@@ -116,7 +125,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-chocolate/94 backdrop-blur-2xl px-6 pt-28"
+            className="fixed inset-0 z-40 bg-chocolate/97 px-6 pt-28"
           >
             <div className="space-y-2 max-w-md mx-auto">
               {navLinks.map((link, i) => (
