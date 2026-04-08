@@ -27,7 +27,6 @@ const raleway = Raleway({
 
 export const viewport: Viewport = {
   themeColor: "#FFF5F6",
-  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -59,10 +58,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <head>
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      </head>
+      <head />
       <body
         className={`${playfair.variable} ${raleway.variable} antialiased`}
       >
