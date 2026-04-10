@@ -339,9 +339,14 @@ main::before {
 }
 
 .marquee-left {
-  animation: marqueeLeft 36s linear infinite;
+  animation: marqueeLeft 40s linear infinite;
 }
 
 .marquee-right {
-  animation: marqueeRight 34s linear infinite;
+  animation: marqueeRight 38s linear infinite;
+}
+
+.group:hover .marquee-left,
+.group:hover .marquee-right {
+  animation-play-state: paused;
 }

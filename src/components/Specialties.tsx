@@ -10,22 +10,19 @@ const specialties = [
     title: "Crêpes Artisanales",
     description:
       "Pâte préparée chaque jour, cuisson précise et garnitures généreuses pour un équilibre parfait.",
-    image:
-      "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=1200&auto=format&fit=crop",
+    image: "/excellence1.webp",
   },
   {
     title: "Gaufres",
     description:
       "Croustillantes à l'extérieur, moelleuses à l'intérieur, avec toppings signatures.",
-    image:
-      "https://images.unsplash.com/photo-1562376552-0d160a2f238d?q=80&w=1200&auto=format&fit=crop",
+    image: "/excellence2.webp",
   },
   {
     title: "Pancakes Américains",
     description:
       "Pancakes épais et moelleux à l'américaine, dorés à la perfection, servis chauds avec votre choix de topping.",
-    image:
-      "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=1200&auto=format&fit=crop",
+    image: "/excellence3.webp",
   },
 ];
 
@@ -87,7 +84,6 @@ export default function Specialties() {
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,14,24,0.06),rgba(26,14,24,0.72))]" />
                 <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-cream/80 text-chocolate flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <ArrowUpRight size={18} />
                 </div>

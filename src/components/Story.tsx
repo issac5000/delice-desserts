@@ -75,7 +75,7 @@ export default function Story() {
               <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 to-transparent" />
             </div>
 
-            {/* Floating card */}
+            {/* Floating card
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -92,6 +92,7 @@ export default function Story() {
                 Ingrédients frais & artisanaux
               </div>
             </motion.div>
+            */}
 
             {/* Decorative frame */}
             <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold/40" />

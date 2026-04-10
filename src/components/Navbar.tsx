@@ -9,7 +9,7 @@ const navLinks = [
   { name: "Accueil", href: "#accueil" },
   { name: "Notre Histoire", href: "#histoire" },
   { name: "Spécialités", href: "#specialites" },
-  { name: "La Carte", href: "#carte" },
+  { name: "La Carte", href: "/menu" },
   { name: "Galerie", href: "#galerie" },
   { name: "Contact", href: "#contact" },
 ];
