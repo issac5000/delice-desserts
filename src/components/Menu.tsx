@@ -2,9 +2,10 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Flame, Star, ShoppingCart } from "lucide-react";
+import { Flame, Star, ShoppingCart, ArrowRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
+import Link from "next/link";
 
 type Category = "crepes" | "gaufres" | "pancakes" | "boissons" | "cookies";
 
@@ -334,6 +335,25 @@ export default function Menu() {
             ))}
           </motion.div>
         </AnimatePresence>
+
+        {/* Link to full menu */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-14"
+        >
+          <Link
+            href="/menu"
+            className="group inline-flex items-center gap-2 rounded-full bg-chocolate text-cream px-8 py-4 text-sm font-semibold hover:bg-gold-dark transition-all duration-300 shadow-[0_8px_24px_rgba(45,31,45,0.2)] hover:shadow-[0_12px_32px_rgba(208,122,148,0.3)]"
+          >
+            Voir la carte complète
+            <ArrowRight
+              size={16}
+              className="group-hover:translate-x-1 transition-transform"
+            />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

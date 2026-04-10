@@ -8,21 +8,21 @@ import Image from "next/image";
 const values = [
   {
     icon: Sparkles,
-    title: "Fait Maison",
+    title: "Frais & Gourmand",
     description:
-      "Chaque création est préparée artisanalement avec des ingrédients frais et de saison.",
+      "Des desserts faits chaque jour, pour garantir fraîcheur et gourmandise.",
   },
   {
     icon: Heart,
-    title: "Avec Passion",
+    title: "Pensé pour le plaisir",
     description:
-      "Notre amour pour la pâtisserie se retrouve dans chaque bouchée, chaque présentation.",
+      "Des desserts généreux, visuels et gourmands, pensés pour vous faire vraiment plaisir.",
   },
   {
     icon: Award,
-    title: "Excellence",
+    title: "Signature Délice",
     description:
-      "Un savoir-faire unique qui allie tradition belge et créativité contemporaine.",
+      "Un mélange de classiques revisités et de créations qui donnent envie de revenir.",
   },
 ];
 

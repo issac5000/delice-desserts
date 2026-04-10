@@ -2,21 +2,21 @@
 
 const topLine = [
   "Crêpes Signature",
-  "Gaufres Belges",
+  "Gaufres",
   "Pancakes Américains",
   "Chocolat Belge",
   "Caramel Spéculoos",
   "Fruits Frais",
-  "Délice Namur",
+  "Cookie Dough",
 ];
 
 const bottomLine = [
   "Fait Minute",
   "Texture Parfaite",
-  "Présentation Premium",
-  "Coffee Pairing",
-  "Recettes Maison",
-  "Ambiance Chic",
+  "Cookies New-yorkais",
+  "Matcha",
+  "Fait Maison",
+  "Ambiance Cosy",
   "Dessert Bar",
 ];
 

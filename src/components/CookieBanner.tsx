@@ -44,7 +44,7 @@ export default function CookieBanner() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-light mb-4">
-            <span>🍪</span> Nouveau <span>🍪</span>
+            <span>🍪</span> Commandez en ligne <span>🍪</span>
           </span>
         </motion.div>
 
@@ -55,8 +55,8 @@ export default function CookieBanner() {
           className="text-3xl md:text-5xl font-bold text-cream"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
-          Nos Cookies{" "}
-          <span className="text-gradient italic">Artisanaux</span>
+          Cookies{" "}
+          <span className="text-gradient italic">New-yorkais</span>
         </motion.h3>
 
         <motion.p
@@ -70,7 +70,7 @@ export default function CookieBanner() {
         </motion.p>
 
         <motion.a
-          href="#cookies"
+          href="https://delicedesserts.com/collections/all"
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.35 }}

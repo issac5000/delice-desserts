@@ -9,12 +9,12 @@ const specialties = [
   {
     title: "Crêpes Artisanales",
     description:
-      "Pâte préparée chaque matin, cuisson précise et garnitures généreuses pour un équilibre parfait.",
+      "Pâte préparée chaque jour, cuisson précise et garnitures généreuses pour un équilibre parfait.",
     image:
       "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Gaufres Belges",
+    title: "Gaufres",
     description:
       "Croustillantes à l'extérieur, moelleuses à l'intérieur, avec toppings signatures.",
     image:
@@ -46,16 +46,6 @@ export default function Specialties() {
       <div className="absolute top-[60%] left-[45%] w-2.5 h-2.5 rounded-full bg-gold/20 pointer-events-none" />
 
       <div ref={ref} className="max-w-7xl mx-auto px-6 relative">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center"
-        >
-          <span className="section-badge">Nos spécialités</span>
-        </motion.div>
-
         {/* Titre */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

@@ -71,9 +71,10 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
                 <Image
                   src="/logo.png"
                   alt="Delice Desserts"
-                  width={72}
-                  height={72}
-                  className="object-contain brightness-0 drop-shadow-[0_0_16px_rgba(208,122,148,0.4)]"
+                  width={96}
+                  height={96}
+                  className="object-contain drop-shadow-[0_0_16px_rgba(208,122,148,0.4)]"
+                  style={{ filter: "brightness(0) saturate(100%) invert(67%) sepia(30%) saturate(567%) hue-rotate(299deg) brightness(96%) contrast(89%)" }}
                   priority
                 />
               </motion.div>
