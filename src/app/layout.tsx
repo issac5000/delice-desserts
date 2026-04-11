@@ -30,6 +30,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://delicedesserts.be"),
   title: "Délice Desserts | Pâtisserie Artisanale à Namur",
   description:
     "Crêpes, gaufres et desserts artisanaux au cœur de Namur. Une expérience gourmande unique, préparée avec passion et des ingrédients de qualité.",
@@ -50,17 +51,19 @@ export const metadata: Metadata = {
     locale: "fr_BE",
     images: [
       {
-        url: "/logo.png",
-        alt: "Délice Desserts",
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Délice Desserts - Pâtisserie Artisanale à Namur",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Délice Desserts | Pâtisserie Artisanale à Namur",
     description:
       "Crêpes, gaufres et desserts artisanaux au cœur de Namur.",
-    images: ["/logo.png"],
+    images: ["/og-image.png"],
   },
 };
 
