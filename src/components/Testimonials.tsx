@@ -83,7 +83,7 @@ function ReviewCard({ item }: { item: (typeof reviews)[number] }) {
           "linear-gradient(155deg, rgba(255,252,253,0.88), rgba(255,244,247,0.6))",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        boxShadow: "0 16px 48px rgba(45,31,45,0.08)",
+        boxShadow: "0 4px 16px rgba(45,31,45,0.06)",
       }}
       draggable={false}
     >
