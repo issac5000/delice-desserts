@@ -68,16 +68,6 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
           />
         </motion.div>
 
-        {/* Title "Desserts" */}
-        <motion.div
-          {...fadeUp(0.3, 50)}
-          animate={ready ? show : {}}
-          className="relative z-20 -mt-24 md:-mt-36 text-center"
-        >
-          <h1 className="text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] text-cream font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
-            Desserts
-          </h1>
-        </motion.div>
 
         {/* "Haute Gourmandise" */}
         <motion.span
@@ -89,7 +79,7 @@ export default function Hero({ ready = false }: { ready?: boolean }) {
             ease,
             scale: { duration: 0.9, delay: 0.55, ease: [0.34, 1.56, 0.64, 1] as const },
           }}
-          className="block text-gradient italic text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] font-bold mt-1 sm:-mt-2 md:-mt-3 relative z-20 text-center"
+          className="block text-gradient italic text-[3rem] sm:text-[3.8rem] lg:text-[5.4rem] leading-[0.9] font-bold -mt-14 sm:-mt-20 md:-mt-28 relative z-20 text-center"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           Haute Gourmandise
