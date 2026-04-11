@@ -48,6 +48,19 @@ export const metadata: Metadata = {
       "Crêpes, gaufres et desserts artisanaux au cœur de Namur.",
     type: "website",
     locale: "fr_BE",
+    images: [
+      {
+        url: "/logo.png",
+        alt: "Délice Desserts",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Délice Desserts | Pâtisserie Artisanale à Namur",
+    description:
+      "Crêpes, gaufres et desserts artisanaux au cœur de Namur.",
+    images: ["/logo.png"],
   },
 };
 
