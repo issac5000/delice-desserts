@@ -2,6 +2,8 @@
 
 import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   menuData,
   categories,
@@ -101,10 +103,16 @@ function FoodItemCard({
   index: number;
   total: number;
 }) {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
   const fromLeft = index % 2 === 0;
 
   return (
-    <article
+    <motion.article
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
       className={`group relative grid md:grid-cols-[1fr_auto] items-center gap-6 md:gap-10 rounded-[28px] border border-gold/[0.12] bg-[var(--surface)] backdrop-blur-md p-6 sm:p-8 md:p-10 transition-all duration-500 hover:border-gold/30 hover:shadow-[0_24px_64px_rgba(45,31,45,0.12)] hover:-translate-y-1 ${
         fromLeft ? "md:mr-8" : "md:ml-8"
       }`}
@@ -150,7 +158,7 @@ function FoodItemCard({
       {index < total - 1 && (
         <div className="hidden md:block absolute -bottom-3 left-1/2 -translate-x-1/2 w-px h-6 bg-gradient-to-b from-gold/15 to-transparent" />
       )}
-    </article>
+    </motion.article>
   );
 }
 
@@ -188,8 +196,8 @@ function DrinkMenuPage({ data }: { data: DrinkCategory }) {
 
       {/* ── Subcategory grid ── */}
       <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-        {data.subcategories.map((sub) => (
-          <DrinkSubCard key={sub.title} sub={sub} />
+        {data.subcategories.map((sub, i) => (
+          <DrinkSubCard key={sub.title} sub={sub} index={i} />
         ))}
       </div>
     </div>
@@ -199,11 +207,21 @@ function DrinkMenuPage({ data }: { data: DrinkCategory }) {
 /* ── Single drink subcategory card ── */
 function DrinkSubCard({
   sub,
+  index,
 }: {
   sub: { title: string; note?: string; items: { name: string; price: number }[] };
+  index: number;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+
   return (
-    <div className="group relative rounded-[28px] border border-gold/[0.12] bg-[var(--surface)] backdrop-blur-md p-7 sm:p-8 transition-all duration-500 hover:border-gold/25 hover:shadow-[0_20px_56px_rgba(45,31,45,0.1)] hover:-translate-y-1">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative rounded-[28px] border border-gold/[0.12] bg-[var(--surface)] backdrop-blur-md p-7 sm:p-8 transition-all duration-500 hover:border-gold/25 hover:shadow-[0_20px_56px_rgba(45,31,45,0.1)] hover:-translate-y-1">
       {/* Hover glow */}
       <div className="absolute -inset-px rounded-[28px] bg-gradient-to-br from-gold/0 to-rose/0 group-hover:from-gold/[0.04] group-hover:to-rose/[0.03] transition-all duration-700 pointer-events-none" />
 
@@ -244,7 +262,7 @@ function DrinkSubCard({
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
