@@ -95,7 +95,7 @@ export default function Specialties() {
                 </h3>
                 <p className="text-chocolate/65 text-sm mt-3 leading-relaxed">{item.description}</p>
                 <a
-                  href="#carte"
+                  href="/menu/pancakes"
                   className="inline-flex items-center gap-2 mt-5 text-xs uppercase tracking-[0.16em] text-gold-dark font-semibold"
                 >
                   Voir la carte

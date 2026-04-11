@@ -2,8 +2,6 @@
 
 import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import {
   menuData,
   categories,
@@ -18,86 +16,53 @@ function formatPrice(price: number) {
   return price.toFixed(2).replace(".", ",") + "€";
 }
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
 /* ────────────────────────────────────────────────
    Food Menu — editorial card layout
    ──────────────────────────────────────────────── */
 function FoodMenuPage({ data }: { data: FoodCategory }) {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-40px" });
-
   return (
     <div className="max-w-5xl mx-auto">
       {/* ── Hero header ── */}
-      <div ref={headerRef} className="relative text-center mb-16 md:mb-24">
+      <div className="relative text-center mb-16 md:mb-24">
         {/* Large decorative letter */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={headerInView ? { opacity: 0.04, scale: 1 } : {}}
-          transition={{ duration: 1, ease }}
-          className="absolute inset-x-0 -top-8 md:-top-16 flex justify-center pointer-events-none select-none"
-        >
+        <div className="absolute inset-x-0 -top-8 md:-top-16 flex justify-center pointer-events-none select-none opacity-[0.04]">
           <span
             className="text-[180px] md:text-[280px] font-bold text-chocolate leading-none"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             {data.title.charAt(0)}
           </span>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1, ease }}
-          className="relative"
-        >
+        <div className="relative">
           <span className="section-badge">{data.title}</span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.2, ease }}
+        <h1
           className="relative text-5xl sm:text-6xl md:text-8xl font-bold text-chocolate mt-5"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           Nos{" "}
           <span className="text-gradient italic">{data.title}</span>
-        </motion.h1>
+        </h1>
 
         {data.subtitle && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={headerInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4 }}
-            className="relative text-chocolate/35 text-sm mt-4 italic"
-          >
+          <p className="relative text-chocolate/35 text-sm mt-4 italic">
             ({data.subtitle})
-          </motion.p>
+          </p>
         )}
 
         {data.note && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={headerInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.5 }}
-            className="relative text-gold-dark/50 text-[11px] mt-3 tracking-[0.2em] uppercase font-medium"
-          >
+          <p className="relative text-gold-dark/50 text-[11px] mt-3 tracking-[0.2em] uppercase font-medium">
             {data.note}
-          </motion.p>
+          </p>
         )}
 
         {/* Decorative divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={headerInView ? { scaleX: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.4, ease }}
-          className="relative max-w-[120px] mx-auto mt-8 h-px bg-gradient-to-r from-transparent via-gold to-transparent"
-        />
+        <div className="max-w-[120px] mx-auto mt-8 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
       </div>
 
-      {/* ── Items — alternating editorial layout ── */}
+      {/* ── Items ── */}
       <div className="space-y-5 md:space-y-6">
         {data.items.map((item, i) => (
           <FoodItemCard
@@ -111,13 +76,7 @@ function FoodMenuPage({ data }: { data: FoodCategory }) {
 
       {/* ── Supplement ribbon ── */}
       {data.supplement && (
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-          className="mt-14 md:mt-20 flex justify-center"
-        >
+        <div className="mt-14 md:mt-20 flex justify-center">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-gold/20 via-gold/30 to-gold/20 rounded-full blur-xl" />
             <div className="relative glass-premium rounded-full px-8 py-3.5">
@@ -126,7 +85,7 @@ function FoodMenuPage({ data }: { data: FoodCategory }) {
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
     </div>
   );
@@ -142,17 +101,10 @@ function FoodItemCard({
   index: number;
   total: number;
 }) {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  // Alternate: even items slide from left, odd from right
   const fromLeft = index % 2 === 0;
 
   return (
-    <motion.article
-      ref={ref}
-      initial={{ opacity: 0, x: fromLeft ? -30 : 30, y: 10 }}
-      animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
-      transition={{ duration: 0.65, delay: 0.05, ease }}
+    <article
       className={`group relative grid md:grid-cols-[1fr_auto] items-center gap-6 md:gap-10 rounded-[28px] border border-gold/[0.12] bg-[var(--surface)] backdrop-blur-md p-6 sm:p-8 md:p-10 transition-all duration-500 hover:border-gold/30 hover:shadow-[0_24px_64px_rgba(45,31,45,0.12)] hover:-translate-y-1 ${
         fromLeft ? "md:mr-8" : "md:ml-8"
       }`}
@@ -186,22 +138,19 @@ function FoodItemCard({
       {/* Price */}
       <div className="relative flex items-center md:flex-col md:items-end gap-3">
         <div className="h-px flex-1 md:hidden bg-gradient-to-r from-gold/15 to-transparent" />
-        <motion.span
-          initial={{ opacity: 0, x: 10 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2, ease }}
+        <span
           className="text-3xl sm:text-4xl md:text-[42px] font-bold text-gold-dark whitespace-nowrap leading-none"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           {formatPrice(item.price)}
-        </motion.span>
+        </span>
       </div>
 
       {/* Connection line to next item (hidden on last) */}
       {index < total - 1 && (
         <div className="hidden md:block absolute -bottom-3 left-1/2 -translate-x-1/2 w-px h-6 bg-gradient-to-b from-gold/15 to-transparent" />
       )}
-    </motion.article>
+    </article>
   );
 }
 
@@ -209,59 +158,38 @@ function FoodItemCard({
    Drinks Menu — elegant column layout
    ──────────────────────────────────────────────── */
 function DrinkMenuPage({ data }: { data: DrinkCategory }) {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-40px" });
-
   return (
     <div className="max-w-5xl mx-auto">
       {/* ── Hero header ── */}
-      <div ref={headerRef} className="relative text-center mb-16 md:mb-20">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={headerInView ? { opacity: 0.04, scale: 1 } : {}}
-          transition={{ duration: 1, ease }}
-          className="absolute inset-x-0 -top-8 md:-top-16 flex justify-center pointer-events-none select-none"
-        >
+      <div className="relative text-center mb-16 md:mb-20">
+        <div className="absolute inset-x-0 -top-8 md:-top-16 flex justify-center pointer-events-none select-none opacity-[0.04]">
           <span
             className="text-[180px] md:text-[280px] font-bold text-chocolate leading-none"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             {data.title.charAt(0)}
           </span>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1, ease }}
-          className="relative"
-        >
+        <div className="relative">
           <span className="section-badge">{data.title}</span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.2, ease }}
+        <h1
           className="relative text-5xl sm:text-6xl md:text-8xl font-bold text-chocolate mt-5"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           Nos{" "}
           <span className="text-gradient italic">{data.title}</span>
-        </motion.h1>
+        </h1>
 
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={headerInView ? { scaleX: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.4, ease }}
-          className="relative max-w-[120px] mx-auto mt-8 h-px bg-gradient-to-r from-transparent via-gold to-transparent"
-        />
+        <div className="max-w-[120px] mx-auto mt-8 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
       </div>
 
       {/* ── Subcategory grid ── */}
       <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-        {data.subcategories.map((sub, si) => (
-          <DrinkSubCard key={sub.title} sub={sub} index={si} />
+        {data.subcategories.map((sub) => (
+          <DrinkSubCard key={sub.title} sub={sub} />
         ))}
       </div>
     </div>
@@ -271,22 +199,11 @@ function DrinkMenuPage({ data }: { data: DrinkCategory }) {
 /* ── Single drink subcategory card ── */
 function DrinkSubCard({
   sub,
-  index,
 }: {
   sub: { title: string; note?: string; items: { name: string; price: number }[] };
-  index: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30, scale: 0.97 }}
-      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.07, ease }}
-      className="group relative rounded-[28px] border border-gold/[0.12] bg-[var(--surface)] backdrop-blur-md p-7 sm:p-8 transition-all duration-500 hover:border-gold/25 hover:shadow-[0_20px_56px_rgba(45,31,45,0.1)] hover:-translate-y-1"
-    >
+    <div className="group relative rounded-[28px] border border-gold/[0.12] bg-[var(--surface)] backdrop-blur-md p-7 sm:p-8 transition-all duration-500 hover:border-gold/25 hover:shadow-[0_20px_56px_rgba(45,31,45,0.1)] hover:-translate-y-1">
       {/* Hover glow */}
       <div className="absolute -inset-px rounded-[28px] bg-gradient-to-br from-gold/0 to-rose/0 group-hover:from-gold/[0.04] group-hover:to-rose/[0.03] transition-all duration-700 pointer-events-none" />
 
@@ -309,12 +226,9 @@ function DrinkSubCard({
 
       {/* Items */}
       <div className="relative space-y-0">
-        {sub.items.map((item, ii) => (
-          <motion.div
+        {sub.items.map((item) => (
+          <div
             key={item.name}
-            initial={{ opacity: 0, x: -8 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.4, delay: index * 0.07 + ii * 0.04, ease }}
             className="group/row flex items-baseline gap-3 py-2.5 border-b border-gold/[0.06] last:border-0"
           >
             <span className="text-chocolate/60 text-[13px] sm:text-sm font-medium group-hover/row:text-chocolate transition-colors duration-200">
@@ -327,10 +241,10 @@ function DrinkSubCard({
             >
               {formatPrice(item.price)}
             </span>
-          </motion.div>
+          </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 

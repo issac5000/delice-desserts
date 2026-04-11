@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { categories } from "@/data/menuData";
 import { ArrowLeft, ChevronDown } from "lucide-react";
 
@@ -52,10 +52,7 @@ export default function MenuLayout({
       </div>
 
       {/* Sticky navigation bar */}
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           navCompact ? "py-2" : "py-4"
         }`}
@@ -163,7 +160,7 @@ export default function MenuLayout({
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Spacer for fixed header */}
       <div className="h-28" />

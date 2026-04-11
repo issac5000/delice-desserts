@@ -123,7 +123,7 @@ export default function Cocktails() {
             </div>
 
             <motion.a
-              href="#carte"
+              href="/menu/drinks"
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.7 }}
