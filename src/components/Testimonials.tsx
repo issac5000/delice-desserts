@@ -191,9 +191,9 @@ export default function Testimonials() {
         transition={{ duration: 0.6, delay: 0.25 }}
         className="relative group"
       >
-        {/* Fade edges */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-cream to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-cream to-transparent" />
+        {/* Fade edges — hidden on mobile */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-cream to-transparent hidden md:block" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-cream to-transparent hidden md:block" />
 
         <div className="marquee-track">
           <div className="marquee-scroll marquee-left group-hover:[animation-play-state:paused]">
