@@ -79,14 +79,36 @@ const SendIcon = () => (
   </svg>
 );
 
+const CONSENT_STORAGE_KEY = "delice-chat-consent";
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
+  const [hasConsent, setHasConsent] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (localStorage.getItem(CONSENT_STORAGE_KEY) === "accepted") {
+      setHasConsent(true);
+    }
+  }, []);
+
+  const acceptConsent = useCallback(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(CONSENT_STORAGE_KEY, "accepted");
+    }
+    setHasConsent(true);
+    setTimeout(() => inputRef.current?.focus(), 50);
+  }, []);
+
+  const declineConsent = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -98,10 +120,10 @@ export default function ChatWidget() {
 
   useEffect(() => {
     if (isOpen) {
-      inputRef.current?.focus();
+      if (hasConsent) inputRef.current?.focus();
       setShowBubble(false);
     }
-  }, [isOpen]);
+  }, [isOpen, hasConsent]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -313,6 +335,46 @@ export default function ChatWidget() {
               </button>
             </div>
 
+            {!hasConsent ? (
+              <div className="flex-1 overflow-y-auto px-5 py-6 flex flex-col">
+                <div className="flex-1 flex flex-col items-center justify-center text-center">
+                  <div className="w-14 h-14 rounded-full bg-gold/15 flex items-center justify-center mb-4">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D07A94" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </div>
+                  <h4 className="text-base font-semibold text-chocolate mb-2">
+                    Confidentialité &amp; consentement
+                  </h4>
+                  <p className="text-sm text-chocolate-light/80 leading-relaxed mb-3">
+                    Pour vous répondre, cet assistant transmet vos messages à
+                    <span className="font-medium text-chocolate"> DeepSeek</span>,
+                    un service d&apos;intelligence artificielle tiers, susceptible
+                    de traiter vos données en dehors de l&apos;Union européenne.
+                  </p>
+                  <p className="text-xs text-chocolate-light/70 leading-relaxed">
+                    Aucune donnée personnelle ne nous est nécessaire pour utiliser
+                    le chat. Évitez de saisir des informations sensibles. En
+                    continuant, vous acceptez ce traitement conformément au RGPD.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 mt-5">
+                  <button
+                    onClick={acceptConsent}
+                    className="w-full bg-chocolate text-cream rounded-full py-3 text-sm font-medium hover:bg-chocolate-light transition-colors cursor-pointer"
+                  >
+                    J&apos;accepte et je discute
+                  </button>
+                  <button
+                    onClick={declineConsent}
+                    className="w-full text-chocolate-light/70 hover:text-chocolate rounded-full py-2 text-sm transition-colors cursor-pointer"
+                  >
+                    Refuser
+                  </button>
+                </div>
+              </div>
+            ) : (
+            <>
             {/* Messages area */}
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
               {/* Welcome message */}
@@ -397,6 +459,8 @@ export default function ChatWidget() {
                 </button>
               </div>
             </form>
+            </>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
