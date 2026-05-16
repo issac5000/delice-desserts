@@ -347,15 +347,32 @@ export default function ChatWidget() {
                     Confidentialité &amp; consentement
                   </h4>
                   <p className="text-sm text-chocolate-light/80 leading-relaxed mb-3">
-                    Pour vous répondre, cet assistant transmet vos messages à
-                    <span className="font-medium text-chocolate"> DeepSeek</span>,
-                    un service d&apos;intelligence artificielle tiers, susceptible
-                    de traiter vos données en dehors de l&apos;Union européenne.
+                    Pour vous répondre, cet assistant transmet vos messages à{" "}
+                    <span className="font-medium text-chocolate">DeepSeek</span>,
+                    un fournisseur d&apos;intelligence artificielle situé en{" "}
+                    <span className="font-medium text-chocolate">
+                      République populaire de Chine
+                    </span>
+                    .
+                  </p>
+                  <p className="text-xs text-chocolate-light/70 leading-relaxed mb-2">
+                    La Chine ne bénéficie pas d&apos;une décision
+                    d&apos;adéquation de la Commission européenne. Ce transfert
+                    est effectué uniquement sur la base de votre consentement
+                    explicite, conformément à l&apos;article 49(1)(a) du RGPD.
                   </p>
                   <p className="text-xs text-chocolate-light/70 leading-relaxed">
-                    Aucune donnée personnelle ne nous est nécessaire pour utiliser
-                    le chat. Évitez de saisir des informations sensibles. En
-                    continuant, vous acceptez ce traitement conformément au RGPD.
+                    Aucune donnée personnelle n&apos;est requise pour utiliser
+                    le chat. <span className="font-medium">Évitez</span> de
+                    saisir nom, e-mail, téléphone ou information sensible. Plus
+                    de détails dans notre{" "}
+                    <a
+                      href="/politique-de-confidentialite"
+                      className="underline hover:text-chocolate"
+                    >
+                      politique de confidentialité
+                    </a>
+                    .
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 mt-5">

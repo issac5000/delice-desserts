@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUp, Instagram, MapPin, Phone } from "lucide-react";
 
@@ -65,6 +66,42 @@ export default function Footer() {
               <Instagram size={14} />
               @_delice.desserts
             </a>
+          </div>
+        </div>
+
+        <div className="mt-10 pt-6 border-t border-cream/16">
+          <div className="grid sm:grid-cols-2 gap-6 text-sm text-cream/65">
+            <div>
+              <p className="text-xs uppercase tracking-[0.22em] text-cream/55 mb-3">Informations légales</p>
+              <p className="text-cream/85 font-semibold">Reby-K SRL</p>
+              <p className="mt-1">Rue Du Long Chêne 46</p>
+              <p>1970 Wezembeek-Oppem, Belgique</p>
+              <p className="mt-2">
+                <span className="text-cream/55">TVA :</span>{" "}
+                <span className="text-cream/85 font-semibold tracking-wide">BE 1011.362.075</span>
+              </p>
+            </div>
+            <div className="sm:text-right">
+              <p className="text-xs uppercase tracking-[0.22em] text-cream/55 mb-3">Documents</p>
+              <ul className="space-y-1.5">
+                <li>
+                  <Link
+                    href="/mentions-legales"
+                    className="hover:text-gold-light transition-colors"
+                  >
+                    Mentions légales
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/politique-de-confidentialite"
+                    className="hover:text-gold-light transition-colors"
+                  >
+                    Politique de confidentialité
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
